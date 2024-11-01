@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <style>
+BODY {
+direction : rtl;
+font-family: Arial, sans-serif;
+    text-align: RIGHT;
+margin-top: 134px; /* اضبط القيمة حسب الحاجة */
+background-color:lightblue;
+font-weight: bold;
+  
+}    
+        /* تنسيق الحاوية الأساسية */
+        .container {
+            width: 100%;
+            background-color: white; /* خلفية بيضاء للحاوية */        
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* ظل حول الحاوية */
+        }
+
+        /* تنسيق القائمة المنسدلة */
+       select {
+display:flex;
+justify-content: center;
+position : relative;
+height : 40 px;
+margin-bottom:30px; 
+display: block;
+align-Item :center ;
+width :390px ;
+border-radius:20px;
+box-shadow: 0 10px 1px rgba(0,0,0.2);
+ color:BLACK;
+background-color:#00FFFF;
+font-size: 19px;
+  padding: 10px ;
+text-align:center;
+ border: 2px solid black;
+}
+        select:focus {
+            outline: yellow; /* إزالة إطار الفوكس */
+        }
+
+        /* تنسيق الأزرار */
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            width: 370px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 20px;
+            background-color: yellow; /* لون الخلفية */
+            color: #000080; /* لون النص */
+            border: 2px solid #000080; /* حدود الزر */
+            border-radius: 10px; /* تدوير الزوايا */
+            cursor: pointer;
+            text-align: center;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+          
+           
+        }
+
+        /* زر العودة */
+        .back-button {
+            margin-top: 20px;
+            width: 370px;
+            display: none;
+            padding: 7px;
+            font-size: 22px;
+            background-color: yellow;
+            color: black;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            cursor: pointer;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+        }
+
+        button:hover {
+            background-color: #00FFFF; /* لون الخلفية عند التمرير */
+        }
+
+        /* إخفاء الـ divs بشكل افتراضي */
+        .hidden {
+            display: none;
+        }
+
+        /* حاوية الأزرار */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .content-div {
+            background-color: white; /* خلفية للنص */
+            padding: 20px;
+            font-size: 11px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            float: none;
+            width: 325px;
+            border: 2px solid #000080;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080; /* لون النص */
+        }
+
+ header {
+            position: fixed;
+            height: 20px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width:100%;
+            background-color:WHITE;
+            color:  BLACK;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             font-size: 18px;
+             height: auto;
+             border: 2px solid #000080;
+               text-align: center;
+        }
+  
+.selected-info {
+            background-color:  white;
+            padding: 8px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 370px;
+            
+            font-size: 15px;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات:SCION</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0">اضغط هناء لأختيار اسم السياره</option>
+<option value="1">FRS</option>
+<option value="2">IA</option>
+<option value="3">IM</option>
+<option value="4">IQ</option>
+<option value="5">TC</option>
+<option value="6">XA</option>
+<option value="7">XB</option>
+<option value="8">XD</option>
+
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>        
+<div id="1Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p>           
+<button onclick="goToDiv('DV1', '1Model')">2013</button>
+<button onclick="goToDiv('DV1', '1Model')">2014-2016</button>
+</div> 
+<div id="2Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p>
+<button onclick="goToDiv('DV1', '2Model')">2016</button>
+</div>  
+<div id="3Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p>
+<button onclick="goToDiv('DV1', '3Model')">2016</button>
+</div>  
+<div id="4Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p>
+<button onclick="goToDiv('DV1', '4Model')">2011-2013</button>
+<button onclick="goToDiv('DV1', '4Model')">2014-2016</button>
+</div>
+<div id="5Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p>
+<button onclick="goToDiv('DV2', '5Model')">2005-2013</button> 
+</div>
+<div id="6Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p>
+<button onclick="goToDiv('DV2', '6Model')">2004-2006</button>
+</div> 
+<div id="7Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p> 
+<button onclick="goToDiv('DV2', '7Model')">2004-2006</button>
+<button onclick="goToDiv('DV2', '7Model')">2007-2008</button>
+<button onclick="goToDiv('DV3', '7Model')">2009-2012</button>
+</div>
+<div id="8Model" class="hidden button-container"><p>اختار المـديـــــــــــــــل</p>
+<button onclick="goToDiv('DV4', '8Model')">2008-2012</button>
+</div> 
+
+<div id="DV1" class="hidden content-div">معلومات عن     
+<li>1</li>
+<li>m1</li>
+<li>كيفية برمجة سيارة سكيون FR-S</li>
+<li>إجراء خطوة بخطوة:</li>
+<li>هذه السيارة غير قابلة للبرمجة على متنها وتتطلب محترفًا مؤهلاً لبرمجة أجهزة التحكم عن بعد الذكية.</li>
+<li>1. حدد موقع صانع أقفال سيارات في منطقتك باستخدام رقم الهاتف أو ابحث عنه على الإنترنت.</li>
+<li>2. إذا كانت سيارتك لا تزال متحركة، فقد يوفر لك ذلك المال عن طريق القيادة إلى صانع الأقفال بدلاً من أن يأتي إليك.</li>
+<li>3. سيقوم صانع الأقفال بعد ذلك بتوصيل معدات كمبيوتر متخصصة بسيارتك من أجل برمجة جهاز التحكم عن بعد الذكي.</li>
+</ul>  
+</div>
+<div id="DV2" class="hidden content-div">معلومات عن
+<li>6</li>
+<li>كيفية برمجة سيارة Scion xB </li>
+<li>إجراء خطوة بخطوة:</li>
+<li>1. افتح باب السائق، وأخرج المفتاح من مفتاح الإشعال.</li>
+<li>2. في غضون 5 ثوانٍ، أدخل المفتاح وأخرجه من مفتاح الإشعال مرتين.</li>
+<li>3. في غضون 40 ثانية، أغلق وافتح باب السائق مرتين.</li>
+<li> 4. أدخل المفتاح وأخرجه من مفتاح الإشعال.</li>
+<li>5. في غضون 40 ثانية، أغلق وافتح باب السائق مرتين.</li>
+<li>6. أدخل المفتاح في مفتاح الإشعال وأغلق باب السائق.</li>
+<li>7. قم بتشغيل الإشعال وإيقاف تشغيله مرة واحدة لبرمجة جهاز التحكم عن بعد مع الاحتفاظ بالرموز الأصلية. قم بتشغيل الإشعال وإيقاف تشغيله مرتين لبرمجة جهاز التحكم عن بعد مع مسح الرمز الأصلي. قم بتشغيل الإشعال وإيقاف تشغيله ثلاث مرات للتحقق من عدد أجهزة التحكم عن بعد المسجلة حاليًا أو خمس مرات لمسح جميع أجهزة التحكم عن بعد المسجلة.</li>
+<li>8. أخرج المفتاح من مفتاح الإشعال.</li>
+<li>9. يجب أن يقوم النظام الآن بقفل وفتح قفل السيارة.</li>
+<li>مرة واحدة أو مرتين أو خمس مرات حسب الوضع المحدد.</li>
+<li>مرة إلى أربع مرات، ببطء،</li>
+<li>للإشارة إلى عدد أجهزة التحكم عن بعد المبرمجة.</li>
+<li>10. في غضون 40 ثانية: اضغط على زري القفل وفتح القفل في نفس الوقت.</li>
+<li>11. في غضون 3 ثوانٍ: اضغط على زر القفل أو فتح القفل بجهاز التحكم عن بعد.</li>
+<li> 12. يجب أن يقوم النظام الآن بقفل وفتح السيارة. مرة واحدة لتأكيد التسجيل، </li>
+<li>مرتين للإشارة إلى فشل البرمجة. </li>
+<li>13. في غضون 40 ثانية، كرر الخطوة 10 لبرمجة أجهزة تحكم عن بعد إضافية. </li>
+<li>يمكن برمجة ما يصل إلى 4 أجهزة تحكم عن بعد. </li>
+<li>14. للخروج من وضع البرمجة، افتح باب السائق. </li>
+</ul>
+</div>
+<div id="DV3" class="hidden content-div">معلومات عن       
+<li>كيفية برمجة سيارة Scion xB </li>
+<li>إجراء خطوة بخطوة: </li>
+<li>استخدم هذه التعليمات لبرمجة الجزء البعيد من مفتاح Remotehead الخاص بك. </li>
+<li>سيتعين قطع الجزء الرئيسي من مفتاحك وبرمجته بواسطة صانع أقفال. </li>
+<li>هناك أربعة أوضاع مختلفة يمكنك استخدامها لبرمجة وظائف قفل الباب عن بعد. </li>
+<li>يتيح لك وضع التأكيد التحقق من عدد أجهزة الإرسال المسجلة. </li>
+<li>يتيح لك وضع الإضافة إضافة جهاز إرسال دون إزعاج أجهزة الإرسال الموجودة. </li>
+<li>يتيح لك وضع إعادة الكتابة استبدال جميع أجهزة الإرسال الموجودة بأخرى جديدة. </li>
+<li>يعمل وضع الحظر على مسح جميع أجهزة الإرسال وإيقاف تشغيل وظيفة قفل الباب عن بعد. </li>
+<li>وضع التأكيد. للتحقق من عدد أجهزة التحكم عن بعد المبرمجة في السيارة: </li>
+<li>ابدأ بالمفتاح خارج السيارة، وباب السائق مفتوح وغير مقفل. </li>
+<li>1. أدخل المفتاح في الإشعال واسحبه للخارج </li>
+<li>2. في غضون 5 ثوانٍ، أدخل المفتاح في الإشعال واسحبه للخارج مرة أخرى. </li>
+<li> 3. في غضون 40 ثانية، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح من الإشعال وأخرجه مرة أخرى.</li>
+<li>4. في غضون 40 ثانية أخرى، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح في الإشعال وأغلق باب السائق.</li>
+<li>5. أدر مفتاح الإشعال من القفل إلى التشغيل إلى الإيقاف ثلاث مرات، مع ترك المفتاح في وضع التشغيل لمدة ثانية واحدة وإيقافه لمدة ثانية واحدة في كل مرة.</li>
+<li>6. أخرج المفتاح من قفل الإشعال.</li>
+<li>ستغلق الأبواب وتفتح نفسها بفاصل زمني يبلغ ثانيتين تقريبًا. عدد مرات قفل الأبواب هو عدد أجهزة التحكم عن بعد المبرمجة في السيارة. إذا تم قفل/فتح السيارة 5 مرات، فلا توجد أكواد مسجلة.</li>
+<li>إضافة وضع. لإضافة جهاز تحكم عن بعد دون إزعاج أجهزة التحكم عن بعد الموجودة:</li>
+<li>ابدأ بالمفتاح خارج السيارة، وباب السائق مفتوح ومفتوح.</li>
+<li>1. أدخل المفتاح في الإشعال واسحبه للخارج.</li>
+<li> 2. في غضون 5 ثوانٍ، أدخل المفتاح في الإشعال واسحبه للخارج مرة أخرى.</li>
+<li>3. في غضون 40 ثانية، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح من الإشعال وأخرجه مرة أخرى.</li>
+<li>4. في غضون 40 ثانية أخرى، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح في الإشعال وأغلق باب السائق.</li>
+<li>5. أدر مفتاح الإشعال من القفل إلى التشغيل إلى الإيقاف، مع ترك المفتاح في وضع التشغيل لمدة ثانية واحدة ثم إيقافه لمدة ثانية واحدة.</li>
+<li>6. أخرج المفتاح من قفل الإشعال.</li>
+<li>ستغلق الأبواب وتفتح نفسها مرة واحدة.</li>
+<li>7. في غضون 40 ثانية، اضغط على أزرار القفل وفتح القفل على جهاز الإرسال في نفس الوقت ثم حررها.</li>
+<li>8. في غضون 3 ثوانٍ، اضغط على أي مفتاح ثم حرره.</li>
+<li>ستغلق الأبواب وتفتح نفسها مرة واحدة إذا كان التسجيل ناجحًا. وستغلق وتفتح مرتين إذا فشل التسجيل.</li>
+<li> 9. إذا كان لديك أجهزة تحكم عن بعد أخرى لبرمجتها، ارجع إلى الخطوة 7 في غضون 40 ثانية. </li>
+<li>10. أدخل المفتاح في الإشعال أو افتح الباب لإكمال التسجيل. </li>
+<li>وضع إعادة الكتابة: لمسح جميع أجهزة التحكم عن بعد وإضافة أجهزة جديدة: </li>
+<li>ابدأ بالمفتاح خارج السيارة، وباب السائق مفتوح وغير مقفل. </li>
+<li>1. أدخل المفتاح في الإشعال واسحبه للخارج. </li>
+<li>2. في غضون 5 ثوانٍ، أدخل المفتاح في الإشعال واسحبه للخارج مرة أخرى. </li>
+<li>3. في غضون 40 ثانية، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح وأخرجه من الإشعال مرة أخرى. </li>
+<li>4. في غضون 40 ثانية أخرى، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح في الإشعال وأغلق باب السائق. </li>
+<li>5. أدر مفتاح الإشعال من القفل إلى التشغيل إلى الإيقاف مرتين، مع ترك المفتاح في وضع التشغيل لمدة ثانية واحدة وإيقافه لمدة ثانية واحدة في كل مرة.</li>
+<li> 6. أخرج المفتاح من قفل الإشعال. ستغلق الأبواب وتفتح نفسها مرتين، مما يشير إلى أنك في وضع إعادة الكتابة. </li>
+<li>7. في غضون 40 ثانية، اضغط على أزرار القفل وفتح القفل على جهاز الإرسال في نفس الوقت ثم حررها. </li>
+<li>8. في غضون 3 ثوانٍ، اضغط على أي مفتاح ثم حرره. </li>
+<li>ستغلق الأبواب وتفتح نفسها مرة واحدة إذا كان التسجيل ناجحًا. وستغلق وتفتح مرتين إذا فشل التسجيل. </li>
+<li>9. إذا كان لديك أجهزة تحكم عن بعد أخرى لبرمجتها، ارجع إلى الخطوة 7 في غضون 40 ثانية. </li>
+<li>10. أدخل المفتاح في الإشعال أو افتح أحد الأبواب لإكمال التسجيل. </li>
+<li>وضع الحظر: لمحو جميع الرموز وتعطيل وظيفة قفل الباب اللاسلكي: </li>
+<li>ابدأ بالمفتاح خارج السيارة، وباب السائق مفتوح ومفتوح. </li>
+<li>1. أدخل المفتاح في الإشعال واسحبه للخارج. </li>
+<li>2. في غضون 5 ثوانٍ، أدخل المفتاح في الإشعال واسحبه للخارج مرة أخرى.</li>
+<li> 3. في غضون 40 ثانية، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح في الإشعال وأخرجه مرة أخرى.</li>
+<li>4. في غضون 40 ثانية أخرى، أغلق وافتح باب السائق مرتين، ثم أدخل المفتاح في الإشعال وأغلق باب السائق.</li>
+<li>5. أدر مفتاح الإشعال من القفل إلى التشغيل إلى الإيقاف خمس مرات، مع ترك المفتاح في وضع التشغيل لمدة ثانية واحدة وإيقافه لمدة ثانية واحدة في كل مرة.</li>
+<li>6. أخرج المفتاح من قفل الإشعال.</li>
+<li>ستغلق الأبواب وتفتح نفسها خمس مرات بفاصل زمني يبلغ حوالي ثانية واحدة.</li>
+</ul>
+</div>
+<div id="DV4" class="hidden content-div">معلومات عن
+<li>كيفية برمجة سيارة Scion xD</li>
+<li>إجراء خطوة بخطوة:</li>
+<li>استخدم هذه التعليمات لبرمجة الجزء البعيد من مفتاح Remotehead الخاص بك.</li>
+<li>يجب قطع الجزء الرئيسي من مفتاحك وبرمجته بواسطة صانع أقفال إذا كان مفتاحك يحتوي على نظام إرسال واستقبال. إذا كان نظامًا غير إرسال واستقبال، فسيحتاج المفتاح فقط إلى القطع، ولا يلزم برمجة الجزء الرئيسي من مفتاحك.</li>
+<li>1. ابدأ بإخراج المفتاح من الإشعال.</li>
+<li>2. افتح وافتح باب جانب السائق. أغلق جميع الأبواب الأخرى بما في ذلك صندوق السيارة.</li>
+<li>3. في غضون 5 ثوانٍ، أدخل المفتاح في الإشعال واسحبه للخارج مرتين.</li>
+<li>4. أغلق ثم افتح باب جانب السائق مرتين.</li>
+<li>5. أدخل المفتاح في الإشعال ثم أخرجه.</li>
+<li>6. أغلق ثم افتح باب جانب السائق مرتين.</li>
+<li> 7. أدخل المفتاح في الإشعال واتركه في الإشعال.</li>
+<li>8. أغلق باب جانب السائق.</li>
+<li>9. قم بتشغيل الإشعال ثم إيقاف تشغيله.</li>
+<li>10. أخرج المفتاح من الإشعال.</li>
+<li>11. ستبدأ أقفال الأبواب الآن في العمل لتأكيد دخول السيارة بنجاح في وضع البرمجة.</li>
+<li>12. اضغط مع الاستمرار على زر القفل وفتح القفل لمدة 1.5 ثانية في أول جهاز تحكم عن بعد يتم برمجته. بمجرد تركه، اضغط مع الاستمرار على زر القفل لمدة ثانيتين.</li>
+<li>13. ستبدأ أقفال الأبواب في العمل لتأكيد نجاح برمجة جهاز التحكم عن بعد. إذا كان لديك أي أجهزة تحكم عن بعد إضافية لبرمجتها، كرر الخطوة 12، وإذا لم يكن لديك أجهزة تحكم عن بعد إضافية، انتقل إلى الخطوة 14.</li>
+<li>14. افتح باب جانب السائق. اكتملت البرمجة الآن.</li>
+</div>
+</div>
+ <script>
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+
+
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+        document.getElementById('1Model').classList.add('hidden');
+        document.getElementById('2Model').classList.add('hidden');
+        document.getElementById('3Model').classList.add('hidden');
+        document.getElementById('4Model').classList.add('hidden');
+        document.getElementById('5Model').classList.add('hidden');
+        document.getElementById('6Model').classList.add('hidden');
+        document.getElementById('7Model').classList.add('hidden');
+        document.getElementById('8Model').classList.add('hidden');
+        
+        // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

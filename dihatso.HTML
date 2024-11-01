@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <style>
+BODY {
+direction : rtl;
+font-family: Arial, sans-serif;
+    text-align: RIGHT;
+margin-top: 134px; /* اضبط القيمة حسب الحاجة */
+background-color:lightblue;
+font-weight: bold;
+  
+}    
+        /* تنسيق الحاوية الأساسية */
+        .container {
+            width: 100%;
+            background-color: white; /* خلفية بيضاء للحاوية */        
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* ظل حول الحاوية */
+        }
+
+        /* تنسيق القائمة المنسدلة */
+       select {
+display:flex;
+justify-content: center;
+position : relative;
+height : 40 px;
+margin-bottom:30px; 
+display: block;
+align-Item :center ;
+width :390px ;
+border-radius:20px;
+box-shadow: 0 10px 1px rgba(0,0,0.2);
+ color:BLACK;
+background-color:#00FFFF;
+font-size: 19px;
+  padding: 10px ;
+text-align:center;
+ border: 2px solid black;
+}
+        select:focus {
+            outline: yellow; /* إزالة إطار الفوكس */
+        }
+
+        /* تنسيق الأزرار */
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            width: 370px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 20px;
+            background-color: yellow; /* لون الخلفية */
+            color: #000080; /* لون النص */
+            border: 2px solid #000080; /* حدود الزر */
+            border-radius: 10px; /* تدوير الزوايا */
+            cursor: pointer;
+            text-align: center;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+          
+           
+        }
+
+        /* زر العودة */
+        .back-button {
+            margin-top: 20px;
+            width: 370px;
+            display: none;
+            padding: 7px;
+            font-size: 22px;
+            background-color: yellow;
+            color: black;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            cursor: pointer;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+        }
+
+        button:hover {
+            background-color: #00FFFF; /* لون الخلفية عند التمرير */
+        }
+
+        /* إخفاء الـ divs بشكل افتراضي */
+        .hidden {
+            display: none;
+        }
+
+        /* حاوية الأزرار */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .content-div {
+            background-color: white; /* خلفية للنص */
+            padding: 20px;
+            font-size: 11px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            float: none;
+            width: 325px;
+            border: 2px solid #000080;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080; /* لون النص */
+        }
+
+ header {
+            position: fixed;
+            height: 20px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width:100%;
+            background-color:WHITE;
+            color:  BLACK;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             font-size: 18px;
+             height: auto;
+             border: 2px solid #000080;
+               text-align: center;
+        }
+  
+.selected-info {
+           
+            background-color:  white;
+            padding: 8px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 370px;
+            
+            font-size: 15px;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات:الديهاتسو</label>
+    <select id="carSelect" onchange="showModel()">
+<option value="0">اضغط هناء لأختيار اسم السياره</option>
+<option value="A">ALTIS</option>
+<option value="B">BE GO</option>
+<option value="C">BOOM</option>
+<option value="D">CHARADE</option>
+<option value="E">COO</option>
+<option value="F">MATERIA</option>
+<option value="G">SIRION</option>
+<option value="H">TERIOS</option>
+<option value="I">YRV</option>
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>
+
+<div id="AModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>           
+<button onclick="goToDiv('DV1', 'AModel')">1997-1999</button>
+<button onclick="goToDiv('DV2', 'AModel')">2000-2008</button>  
+</div>
+<div id="BModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV3', 'BModel')">2006-2014</button>   
+</div>
+<div id="CModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>           
+<button onclick="goToDiv('DV4', 'CModel')">2004-2011</button>   
+</div>
+<div id="DModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV5', 'DModel')">2007-2009</button>   
+</div>
+<div id="EModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>          
+<button onclick="goToDiv('DV6', 'EModel')">2006-2012</button>  
+</div>
+<div id="FModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV7', 'FModel')">2006-2012</button>  
+</div>
+<div id="GModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>         
+<button onclick="goToDiv('DV8', 'GModel')">2004-2010</button>  
+</div>
+<div id="HModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV9', 'HModel')">2006-2014</button>  
+</div>
+<div id="IModel"class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV10', 'IModel')">2003-2006</button>   
+</div>
+<div id="DV1" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>      
+    ALTIS
+    1997-1999 
+    
+        <li>ملاحظة: لبرمجة أجهزة الإرسال عن بُعد ، تتطلب دائرة (البرنامج) PRG لقفل الباب اللاسلكي ECU التأريض. يمكن القيام بذلك عن طريق تحديد موقع مفتاح التحكم في المرآة على جانب عجلة القيادة. ملاحظة: يمكن برمجة جهازي الإرسال عن بعد كحد أقصى.</li>
+        <li>مع خروج مفتاح الإشعال ، افصل تسخير مفتاح التحكم في المرآة.</li>
+        <li>باستخدام وصلة توصيل / كابل سلك مناسب للتوصيل 2 (PRG) بالطرف 10 (GND) ملاحظة: يرجى الاطلاع على الصورة لألوان الأسلاك وتخطيط الموصل.</li>
+        <li>سيتم قفل الأبواب لتأكيد تحديد وضع البرمجة.</li>
+        <li>اضغط على أي زر على أول جهاز إرسال عن بعد ليتم برمجته ، وسيتم قفل الأبواب لتأكيد نجاح البرمجة.</li>
+        <li>كرر الخطوة 4 لجهاز إرسال إضافي عن بعد.</li>
+        <li>افصل الطائر / السلك.</li>
+    
+</div>
+
+<div id="DV2" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>      
+    ALTIS
+    2000-2008
+    
+        <li>ملاحظة: تأكد من أن باب السائقين مفتوح وغير مقفل وأن المفتاح خارج الإشعال.</li>
+        <li>أدخل وأزل المفتاح من أسطوانة مفتاح الإشعال مرتين في غضون 5 ثوانٍ.</li>
+        <li>أغلق باب السائقين وافتحه مرتين في غضون 40 ثانية.</li>
+        <li>أدخل المفتاح في الإشعال وقم بإزالته مرة أخرى.</li>
+        <li>أغلق باب السائقين وافتحه مرتين في غضون 40 ثانية مرة أخرى.</li>
+        <li>أغلق الباب.</li>
+        <li>أدخل المفتاح في أسطوانة مفتاح الإشعال.</li>
+        <li>أدر مفتاح الإشعال من القفل إلى التشغيل والعودة إلى القفل على فترات زمنية مدتها ثانية واحدة لتحديد الوضع المطلوب.</li>
+        <li>ملاحظة: 1 مرة للإضافة. ملاحظة: 2 مرات لإعادة الكتابة. ملاحظة: 3 مرات للتأكيد. ملاحظة: 5 مرات للحظر.</li>
+        <li>قم بإزالة المفتاح من الإشعال.</li>
+        <li>لتأكيد اختيارك لجميع الأوضاع باستثناء التأكيد ، ستقوم أقفال الطاقة الآن بدورة القفل لإلغاء قفل عدد المرات المقابلة لاختيارك.</li>
+        <li>ملاحظة: إذا تم تحديد وضع التأكيد ، فستدور أقفال أبواب الطاقة الآن (في فترتين من الثانية) عدد المرات المقابلة لعدد أجهزة الإرسال المسجلة حاليًا.</li>
+        <li>ملاحظة: فتح الباب سيكمل الإجراء. ملاحظة: إذا تم تحديد وضع الحظر ، فسيتم فتح الباب الإجراء.</li>
+        <li>للإضافة أو إعادة الكتابة ، في غضون 20 ثانية من تأكيد قفل الباب ، اتبع: (أ) اضغط على كل من أزرار قفل جهاز الإرسال وإلغاء القفل في وقت واحد بين 1 و 1.5 ثانية وتحرير. (ب) في غضون 3 ثوانٍ من الخطوة (أ) ، اضغط على زر قفل جهاز الإرسال لأكثر من ثانية واحدة ثم حرره. (ج) إذا تمت برمجة جهاز الإرسال بنجاح ، فسيتم تشغيل أقفال الطاقة لإلغاء القفل. مرة في هذا الوقت. إذا كانت هناك مشاكل في الإجراء المستخدم حتى هذه النقطة ، فستدور الأقفال مرتين ، وفي هذه الحالة يجب عليك العودة وتكرار الخطوات المذكورة أعلاه (أ) و (ب). (د) في حالة برمجة أجهزة إرسال متعددة ، كرر الخطوات المذكورة أعلاه (أ) إلى (ج).</li>
+        <li>افتح باب السائقين لإكمال الإجراء.</li>
+    
+</div>
+
+<div id="DV3" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p> 
+    BE GO
+    2004-2010
+    
+        <li>تأكد من إغلاق جميع الأبواب.</li>
+        <li>تأكد من إيقاف الإشعال.</li>
+        <li>افصل الطرف السلبي للبطارية.</li>
+        <li>في غضون 15 ثانية من فصل الطرف ، قم بتوصيل الطرف السلبي واضغط على أزرار قفل التحكم عن بعد وإلغاء القفل. ملاحظة: في بعض الطرز فقط زر إلغاء القفل لمدة 5 ثوانٍ على الأقل.</li>
+        <li>ستقفل السيارة وتفتح.</li>
+        <li>ثم في غضون 5 ثوانٍ ، اضغط على أزرار القفل وإلغاء القفل لمدة ثانية واحدة على الأقل حتى يتم قفل السيارة وإلغاء قفلها. ملاحظة: في بعض الطرز فقط قم بإلغاء القفل.</li>
+        <li>في حالة برمجة جهاز تحكم عن بعد ثانٍ ، كرر الخطوات من 4 إلى 6. ملاحظة: يمكن برمجة جهازي تحكم بحد أقصى.</li>
+    
+</div>
+
+<div id="DV4" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>      
+    BOOM
+    2006-2014 
+    
+        <li>تأكد من إغلاق جميع الأبواب.</li>
+        <li>تأكد من إيقاف الإشعال.</li>
+        <li>افصل الطرف السلبي للبطارية.</li>
+        <li>في غضون 15 ثانية من فصل الطرف ، قم بتوصيل الطرف السلبي واضغط على أزرار قفل التحكم عن بعد وإلغاء القفل. ملاحظة: في بعض الطرز فقط زر إلغاء القفل لمدة 5 ثوانٍ على الأقل.</li>
+        <li>ستقفل السيارة وتفتح.</li>
+        <li>ثم في غضون 5 ثوانٍ ، اضغط على أزرار القفل وإلغاء القفل لمدة ثانية واحدة على الأقل حتى يتم قفل السيارة وإلغاء قفلها. ملاحظة: في بعض الطرز فقط قم بإلغاء القفل.</li>
+        <li>في حالة برمجة جهاز تحكم عن بعد ثانٍ ، كرر الخطوات من 4 إلى 6. ملاحظة: يمكن برمجة جهازي تحكم بحد أقصى.</li>
+    
+</div>
+
+<div id="DV5" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p> 
+    CHARADE
+    2004-2011 
+    
+        <li>ملاحظة: تأكد من أن باب السائقين مفتوح وغير مقفل وأن المفتاح خارج الإشعال.</li>
+        <li>أدخل وأزل المفتاح من أسطوانة مفتاح الإشعال مرتين في غضون 5 ثوانٍ.</li>
+        <li>أغلق باب السائقين وافتحه مرتين في غضون 40 ثانية.</li>
+        <li>أدخل المفتاح في الإشعال وقم بإزالته مرة أخرى.</li>
+        <li>أغلق باب السائقين وافتحه مرتين في غضون 40 ثانية مرة أخرى.</li>
+        <li>أغلق الباب.</li>
+        <li>أدخل المفتاح في أسطوانة مفتاح الإشعال.</li>
+        <li>أدر مفتاح الإشعال من القفل إلى التشغيل والعودة إلى القفل على فترات زمنية مدتها ثانية واحدة لتحديد الوضع المطلوب.</li>
+        <li>ملاحظة: 1 مرة للإضافة. ملاحظة: 2 مرات لإعادة الكتابة. ملاحظة: 3 مرات للتأكيد. ملاحظة: 5 مرات للحظر.</li>
+        <li>قم بإزالة المفتاح من الإشعال.</li>
+        <li>لتأكيد اختيارك لجميع الأوضاع باستثناء التأكيد ، ستقوم أقفال الطاقة الآن بدورة القفل لإلغاء قفل عدد المرات المقابلة لاختيارك.</li>
+        <li>ملاحظة: إذا تم تحديد وضع التأكيد ، فستدور أقفال أبواب الطاقة الآن (في فترتين من الثانية) عدد المرات المقابلة لعدد أجهزة الإرسال المسجلة حاليًا.</li>
+        <li>ملاحظة: فتح الباب سيكمل الإجراء. ملاحظة: إذا تم تحديد وضع الحظر ، فسيتم فتح الباب الإجراء.</li>
+        <li>للإضافة أو إعادة الكتابة ، في غضون 20 ثانية من تأكيد قفل الباب ، اتبع: (أ) اضغط على كل من أزرار قفل جهاز الإرسال وإلغاء القفل في وقت واحد بين 1 و 1.5 ثانية وتحرير. (ب) في غضون 3 ثوانٍ من الخطوة (أ) ، اضغط على زر قفل جهاز الإرسال لأكثر من ثانية واحدة ثم حرره. (ج) إذا تمت برمجة جهاز الإرسال بنجاح ، فسيتم تشغيل أقفال الطاقة لإلغاء القفل. مرة في هذا الوقت. إذا كانت هناك مشاكل في الإجراء المستخدم حتى هذه النقطة ، فستدور الأقفال مرتين ، وفي هذه الحالة يجب عليك العودة وتكرار الخطوات المذكورة أعلاه (أ) و (ب). (د) في حالة برمجة أجهزة إرسال متعددة ، كرر الخطوات المذكورة أعلاه (أ) إلى (ج).</li>
+        <li>افتح باب السائقين لإكمال الإجراء.</li>
+    
+</div>
+
+<div id="DV6" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p> 
+    COO
+    2007-2009
+    
+        <li>تأكد من إغلاق جميع الأبواب.</li>
+        <li>تأكد من إيقاف الإشعال.</li>
+        <li>افصل الطرف السلبي للبطارية.</li>
+        <li>في غضون 15 ثانية من فصل الطرف ، قم بتوصيل الطرف السلبي واضغط على أزرار قفل التحكم عن بعد وإلغاء القفل. ملاحظة: في بعض الطرز فقط زر إلغاء القفل لمدة 5 ثوانٍ على الأقل.</li>
+        <li>ستقفل السيارة وتفتح.</li>
+        <li>ثم في غضون 5 ثوانٍ ، اضغط على أزرار القفل وإلغاء القفل لمدة ثانية واحدة على الأقل حتى يتم قفل السيارة وإلغاء قفلها. ملاحظة: في بعض الطرز فقط قم بإلغاء القفل.</li>
+        <li>في حالة برمجة جهاز تحكم عن بعد ثانٍ ، كرر الخطوات من 4 إلى 6. ملاحظة: يمكن برمجة جهازي تحكم بحد أقصى.</li>
+    
+</div>
+
+<div id="DV7" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p> 
+    MATERIA
+    2006-2012
+    
+        <li>تأكد من إغلاق جميع الأبواب.</li>
+        <li>تأكد من إيقاف الإشعال.</li>
+        <li>افصل الطرف السلبي للبطارية.</li>
+        <li>في غضون 15 ثانية من فصل الطرف ، قم بتوصيل الطرف السلبي واضغط على أزرار قفل التحكم عن بعد وإلغاء القفل. ملاحظة: في بعض الطرز فقط زر إلغاء القفل لمدة 5 ثوانٍ على الأقل.</li>
+        <li>ستقفل السيارة وتفتح.</li>
+        <li>ثم في غضون 5 ثوانٍ ، اضغط على أزرار القفل وإلغاء القفل لمدة ثانية واحدة على الأقل حتى يتم قفل السيارة وإلغاء قفلها. ملاحظة: في بعض الطرز فقط قم بإلغاء القفل.</li>
+        <li>في حالة برمجة جهاز تحكم عن بعد ثانٍ ، كرر الخطوات من 4 إلى 6. ملاحظة: يمكن برمجة جهازي تحكم بحد أقصى.</li>
+    
+</div>
+<div id="DV8" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>      
+    SIRION
+    2004-2010
+    
+        <li>تأكد من إغلاق جميع الأبواب.</li>
+        <li>تأكد من إيقاف الإشعال.</li>
+        <li>افصل الطرف السلبي للبطارية.</li>
+        <li>في غضون 15 ثانية من فصل الطرف ، قم بتوصيل الطرف السلبي واضغط على أزرار قفل التحكم عن بعد وإلغاء القفل. ملاحظة: في بعض الطرز فقط زر إلغاء القفل لمدة 5 ثوانٍ على الأقل.</li>
+        <li>ستقفل السيارة وتفتح.</li>
+        <li>ثم في غضون 5 ثوانٍ ، اضغط على أزرار القفل وإلغاء القفل لمدة ثانية واحدة على الأقل حتى يتم قفل السيارة وإلغاء قفلها. ملاحظة: في بعض الطرز فقط قم بإلغاء القفل.</li>
+        <li>في حالة برمجة جهاز تحكم عن بعد ثانٍ ، كرر الخطوات من 4 إلى 6. ملاحظة: يمكن برمجة جهازي تحكم بحد أقصى.</li>
+    
+</div>
+
+<div id="DV9" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>      
+    TERIOS
+    2006-2014
+    
+        <li>تأكد من إغلاق جميع الأبواب.</li>
+        <li>تأكد من إيقاف الإشعال.</li>
+        <li>افصل الطرف السلبي للبطارية.</li>
+        <li>في غضون 15 ثانية من فصل الطرف ، قم بتوصيل الطرف السلبي واضغط على أزرار قفل التحكم عن بعد وإلغاء القفل. ملاحظة: في بعض الطرز فقط زر إلغاء القفل لمدة 5 ثوانٍ على الأقل.</li>
+        <li>ستقفل السيارة وتفتح.</li>
+        <li>ثم في غضون 5 ثوانٍ ، اضغط على أزرار القفل وإلغاء القفل لمدة ثانية واحدة على الأقل حتى يتم قفل السيارة وإلغاء قفلها. ملاحظة: في بعض الطرز فقط قم بإلغاء القفل.</li>
+        <li>في حالة برمجة جهاز تحكم عن بعد ثانٍ ، كرر الخطوات من 4 إلى 6. ملاحظة: يمكن برمجة جهازي تحكم بحد أقصى.</li>
+    
+</div>
+
+<div id="DV10" class="hidden content-div">
+    <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p> 
+    YRV
+    2003-2006
+    
+        <li>تأكد من إغلاق جميع الأبواب.</li>
+        <li>تأكد من إيقاف الإشعال.</li>
+        <li>افصل الطرف السلبي للبطارية.</li>
+        <li>في غضون 15 ثانية من فصل الطرف ، قم بتوصيل الطرف السلبي واضغط على أزرار قفل التحكم عن بعد وإلغاء القفل. ملاحظة: في بعض الطرز فقط زر إلغاء القفل لمدة 5 ثوانٍ على الأقل.</li>
+        <li>ستقفل السيارة وتفتح.</li>
+        <li>ثم في غضون 5 ثوانٍ ، اضغط على أزرار القفل وإلغاء القفل لمدة ثانية واحدة على الأقل حتى يتم قفل السيارة وإلغاء قفلها. ملاحظة: في بعض الطرز فقط قم بإلغاء القفل.</li>
+        <li>في حالة برمجة جهاز تحكم عن بعد ثانٍ ، كرر الخطوات من 4 إلى 6. ملاحظة: يمكن برمجة جهازي تحكم بحد أقصى.</li>
+    
+</div>
+
+</div>
+<script>
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+function showModel() {
+    // إخفاء جميع أقسام النماذج
+    document.getElementById('AModel').classList.add('hidden');
+    document.getElementById('BModel').classList.add('hidden');
+    document.getElementById('CModel').classList.add('hidden');
+    document.getElementById('DModel').classList.add('hidden');
+    document.getElementById('EModel').classList.add('hidden');
+    document.getElementById('FModel').classList.add('hidden');
+    document.getElementById('GModel').classList.add('hidden');
+    document.getElementById('HModel').classList.add('hidden');
+    document.getElementById('IModel').classList.add('hidden');
+    // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

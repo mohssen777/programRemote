@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <style>
+BODY {
+direction : rtl;
+font-family: Arial, sans-serif;
+    text-align: RIGHT;
+margin-top: 134px; /* اضبط القيمة حسب الحاجة */
+background-color:lightblue;
+font-weight: bold;
+  
+}    
+        /* تنسيق الحاوية الأساسية */
+        .container {
+            width: 100%;
+            background-color: white; /* خلفية بيضاء للحاوية */        
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* ظل حول الحاوية */
+        }
+
+        /* تنسيق القائمة المنسدلة */
+       select {
+display:flex;
+justify-content: center;
+position : relative;
+height : 40 px;
+margin-bottom:30px; 
+display: block;
+align-Item :center ;
+width :390px ;
+border-radius:20px;
+box-shadow: 0 10px 1px rgba(0,0,0.2);
+ color:BLACK;
+background-color:#00FFFF;
+font-size: 19px;
+  padding: 10px ;
+text-align:center;
+ border: 2px solid black;
+}
+        select:focus {
+            outline: yellow; /* إزالة إطار الفوكس */
+        }
+
+        /* تنسيق الأزرار */
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            width: 370px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 20px;
+            background-color: yellow; /* لون الخلفية */
+            color: #000080; /* لون النص */
+            border: 2px solid #000080; /* حدود الزر */
+            border-radius: 10px; /* تدوير الزوايا */
+            cursor: pointer;
+            text-align: center;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+          
+           
+        }
+
+        /* زر العودة */
+        .back-button {
+            margin-top: 20px;
+            width: 370px;
+            display: none;
+            padding: 7px;
+            font-size: 22px;
+            background-color: yellow;
+            color: black;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            cursor: pointer;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+        }
+
+        button:hover {
+            background-color: #00FFFF; /* لون الخلفية عند التمرير */
+        }
+
+        /* إخفاء الـ divs بشكل افتراضي */
+        .hidden {
+            display: none;
+        }
+
+        /* حاوية الأزرار */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .content-div {
+            background-color: white; /* خلفية للنص */
+            padding: 20px;
+            font-size: 11px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            float: none;
+            width: 325px;
+            border: 2px solid #000080;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080; /* لون النص */
+        }
+
+ header {
+            position: fixed;
+            height: 20px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width:100%;
+            background-color:WHITE;
+            color:  BLACK;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             font-size: 18px;
+             height: auto;
+             border: 2px solid #000080;
+               text-align: center;
+        }
+  
+.selected-info {
+            background-color:  white;
+            padding: 8px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 370px;
+            
+            font-size: 15px;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات:VOLVO</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0" selected="selected">اضغط هناء لأختيار اسم السياره</option>
+<option value="1">C30</option>
+<option value="2">C70</option>
+<option value="3">S40</option>
+<option value="4">S60</option>
+<option value="5">S80</option>
+<option value="6">S90</option>
+<option value="7">V40</option>
+<option value="8">V50</option>
+<option value="9">V60</option>
+<option value="10">V70</option>
+<option value="11">V90</option>
+<option value="12">XC40</option>
+<option value="13">XC60</option>
+<option value="14">XC70</option>
+<option value="15">XC90</option>
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>
+<div id="1Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '1Model')">2008-2010  </button> 
+<button onclick="goToDiv('DV1', '1Model')"> 2011-2014 </button>
+</div>
+<div id="2Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '2Model')">2006-2009 </button>
+<button onclick="goToDiv('DV1', '2Model')">2010-2014 </button> 
+</div>
+<div id="3Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '3Model')">2008-2010  </button> 
+<button onclick="goToDiv('DV1', '3Model')"> 2011-2014 </button>
+</div>
+<div id="4Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '4Model')">2008-2010  </button> 
+<button onclick="goToDiv('DV1', '4Model')"> 2011-2014 </button>
+<button onclick="goToDiv('DV1', '4Model')">2015-2022</button> 
+</div>
+<div id="5Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '5Model')">2008-2010  </button> 
+<button onclick="goToDiv('DV1', '5Model')"> 2011-2014 </button>
+<button onclick="goToDiv('DV1', '5Model')">2015-2016</button> 
+</div>
+<div id="6Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '6Model')"> 2017-2019 </button>
+<button onclick="goToDiv('DV1', '6Model')">2020-2022</button> 
+</div>
+<div id="7Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '7Model')">2013-2015  </button> 
+<button onclick="goToDiv('DV1', '7Model')">2015-2019</button> 
+</div>
+<div id="8Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '8Model')">2004-2007  </button> 
+<button onclick="goToDiv('DV1', '8Model')"> 2008-2012 </button>
+</div>
+<div id="9Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '9Model')">2019-2021</button>
+</div>
+<div id="10Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '10Model')">1999</button>
+<button onclick="goToDiv('DV1', '10Model')">2008-2012</button>
+<button onclick="goToDiv('DV1', '10Model')">2013-2015</button>
+<button onclick="goToDiv('DV1', '10Model')">2016</button>
+</div>
+<div id="11Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '11Model')">2017-2021 </button>
+</div>
+<div id="12Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '12Model')"> 2018-2021</button>
+</div>
+<div id="13Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '13Model')"> 2010-2013</button>
+<button onclick="goToDiv('DV1', '13Model')">2014-2019</button>
+<button onclick="goToDiv('DV1', '13Model')"> 2020-2021</button>
+</div>
+<div id="14Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '14Model')">2008-2010  </button> 
+<button onclick="goToDiv('DV1', '14Model')"> 2011-2014 </button>
+<button onclick="goToDiv('DV1', '14Model')">2015-2016</button> 
+
+</div>
+<div id="15Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '15Model')">2008-2010  </button> 
+<button onclick="goToDiv('DV1', '15Model')"> 2011-2014 </button>
+<button onclick="goToDiv('DV1', '15Model')">2015-2016</button> 
+</div>    
+    <!-- Divs for car models -->
+<!-- Slider Poster -->
+<div id="DV1" class="hidden content-div"><p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>
+<li>يتطلب استخدام أداة مسح لبرمجة المفاتيح</li>
+<li>اتصل بأخصائي الأقفال في منطقتك. شكرًا جزيلاً.</li>
+</div>
+</div>
+<script>
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+       document.getElementById('1Model').classList.add('hidden');
+       document.getElementById('2Model').classList.add('hidden');
+       document.getElementById('3Model').classList.add('hidden');
+       document.getElementById('4Model').classList.add('hidden');
+       document.getElementById('5Model').classList.add('hidden');
+       document.getElementById('6Model').classList.add('hidden');
+       document.getElementById('7Model').classList.add('hidden');
+       document.getElementById('8Model').classList.add('hidden');
+       document.getElementById('9Model').classList.add('hidden');
+       document.getElementById('10Model').classList.add('hidden');
+       document.getElementById('11Model').classList.add('hidden');
+       document.getElementById('12Model').classList.add('hidden');
+       document.getElementById('13Model').classList.add('hidden');
+       document.getElementById('14Model').classList.add('hidden');
+       document.getElementById('15Model').classList.add('hidden');
+       
+        
+        // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

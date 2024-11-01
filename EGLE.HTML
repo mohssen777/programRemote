@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <style>
+BODY {
+direction : rtl;
+font-family: Arial, sans-serif;
+    text-align: RIGHT;
+margin-top: 134px; /* اضبط القيمة حسب الحاجة */
+background-color:lightblue;
+font-weight: bold;
+  
+}    
+        /* تنسيق الحاوية الأساسية */
+        .container {
+            width: 100%;
+            background-color: white; /* خلفية بيضاء للحاوية */        
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* ظل حول الحاوية */
+        }
+
+        /* تنسيق القائمة المنسدلة */
+       select {
+display:flex;
+justify-content: center;
+position : relative;
+height : 40 px;
+margin-bottom:30px; 
+display: block;
+align-Item :center ;
+width :390px ;
+border-radius:20px;
+box-shadow: 0 10px 1px rgba(0,0,0.2);
+ color:BLACK;
+background-color:#00FFFF;
+font-size: 19px;
+  padding: 10px ;
+text-align:center;
+ border: 2px solid black;
+}
+        select:focus {
+            outline: yellow; /* إزالة إطار الفوكس */
+        }
+
+        /* تنسيق الأزرار */
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            width: 370px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 20px;
+            background-color: yellow; /* لون الخلفية */
+            color: #000080; /* لون النص */
+            border: 2px solid #000080; /* حدود الزر */
+            border-radius: 10px; /* تدوير الزوايا */
+            cursor: pointer;
+            text-align: center;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+          
+           
+        }
+
+        /* زر العودة */
+        .back-button {
+            margin-top: 20px;
+            width: 370px;
+            display: none;
+            padding: 7px;
+            font-size: 22px;
+            background-color: yellow;
+            color: black;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            cursor: pointer;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+        }
+
+        button:hover {
+            background-color: #00FFFF; /* لون الخلفية عند التمرير */
+        }
+
+        /* إخفاء الـ divs بشكل افتراضي */
+        .hidden {
+            display: none;
+        }
+
+        /* حاوية الأزرار */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .content-div {
+            background-color: white; /* خلفية للنص */
+            padding: 20px;
+            font-size: 11px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            float: none;
+            width: 325px;
+            border: 2px solid #000080;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080; /* لون النص */
+        }
+
+ header {
+            position: fixed;
+            height: 20px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width:100%;
+            background-color:WHITE;
+            color:  BLACK;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             font-size: 18px;
+             height: auto;
+             border: 2px solid #000080;
+               text-align: center;
+        }
+  
+.selected-info {
+            background-color:  white;
+            padding: 8px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 370px;
+            
+            font-size: 15px;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات: Egle</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0">اضغط هناء لأختيار اسم السياره</option>
+<option value="1">SUMMIT</option>
+<option value="2">TALON</option>
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>        
+<div id="1Model" class="hidden button-container">
+<button onclick="goToDiv('DV1', '1Model')">1993-1998</button>        
+</div>
+<div id="2Model" class="hidden button-container">
+<button onclick="goToDiv('DV2', '2Model')">1993-1994</button>
+<button onclick="goToDiv('DV2', '2Model')">1995-2000</button>
+</div>
+<div id="DV1" class="hidden content-div">معلومات عن     
+<li>SUMMIT</li>
+<li>مديل 1993-1998</li>
+<li>ملاحظة: موقع وحدة الإرسال: -</li>
+<li>جميع الموديلات أسفل عجلة القيادة، خلف لوحة مسند الركبة.</li>
+<li>1. افتح باب السائق واتركه مفتوحًا.</li>
+<li>2. أدر مفتاح الإشعال إلى وضع التشغيل.</li>
+<li>3. اضغط مع الاستمرار على زر مؤشر LED للحالة لمدة 15 ثانية، واستمر في الضغط على الزر.</li>
+<li>4. سيتم قفل الأبواب وفتحها 3 مرات.</li>
+<li>5. مع الاستمرار في الضغط على الزر، اضغط على الزر 1 في جهاز الإرسال عن بعد الأول.</li>
+<li>6. سيتم قفل الأبواب وفتحها.</li>
+<li>7. مع الاستمرار في الضغط على الزر، اضغط على الزر 1 في جهاز الإرسال عن بعد الثاني.</li>
+<li>8. سيتم قفل الأبواب وفتحها.</li>
+<li>9. حرر زر البرمجة.</li>
+<li>10. أوقف تشغيل الإشعال وأغلق الأبواب.</li>
+<li>11. تحقق من تشغيل جميع أجهزة الإرسال عن بعد بشكل صحيح.</li>
+</div>
+<div id="DV2" class="hidden content-div">معلومات عن      
+<li>TALON</li>
+<li>ملاحظة: موقع وحدة الاستقبال: </li>
+<li>Diamante = بالقرب من صندوق القفازات. </li>
+<li>Eclipse = أسفل عجلة القيادة، خلف لوحة دعم الركبة. </li>
+<li>Montero = أسفل عجلة القيادة، خلف لوحة دعم الركبة. </li>
+<li>Galant = على محرك المنفاخ، فوق صندوق القفازات. </li>
+<li>1. حدد موقع موصل برمجة RKE، الموجود بالقرب من وحدة جهاز الإرسال عن بعد. </li>
+<li>2. باستخدام سلك توصيل مناسب، قم بتوصيل دبابيس البرمجة معًا. </li>
+<li>3. سيتم قفل الأبواب وفتحها لتأكيد وضع البرمجة. </li>
+<li>4. اضغط على زر القفل في جهاز الإرسال عن بعد الأول. </li>
+<li>5. سيتم قفل الأبواب وفتحها. </li>
+<li>6. اضغط على زر القفل في جهاز الإرسال عن بعد الثاني. </li>
+<li>7. سيتم قفل الأبواب وفتحها. </li>
+<li>8. قم بإزالة سلك التوصيل. </li>
+<li>9. تحقق من تشغيل جميع أجهزة الإرسال عن بعد بشكل صحيح. </li>
+</div>
+</div>
+<script>
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+        document.getElementById('1Model').classList.add('hidden');
+        document.getElementById('2Model').classList.add('hidden');
+       
+         // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

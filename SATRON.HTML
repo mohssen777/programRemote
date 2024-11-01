@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <style>
+BODY {
+direction : rtl;
+font-family: Arial, sans-serif;
+    text-align: RIGHT;
+margin-top: 134px; /* اضبط القيمة حسب الحاجة */
+background-color:lightblue;
+font-weight: bold;
+  
+}    
+        /* تنسيق الحاوية الأساسية */
+        .container {
+            width: 100%;
+            background-color: white; /* خلفية بيضاء للحاوية */        
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* ظل حول الحاوية */
+        }
+
+        /* تنسيق القائمة المنسدلة */
+       select {
+display:flex;
+justify-content: center;
+position : relative;
+height : 40 px;
+margin-bottom:30px; 
+display: block;
+align-Item :center ;
+width :390px ;
+border-radius:20px;
+box-shadow: 0 10px 1px rgba(0,0,0.2);
+ color:BLACK;
+background-color:#00FFFF;
+font-size: 19px;
+  padding: 10px ;
+text-align:center;
+ border: 2px solid black;
+}
+        select:focus {
+            outline: yellow; /* إزالة إطار الفوكس */
+        }
+
+        /* تنسيق الأزرار */
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            width: 370px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 20px;
+            background-color: yellow; /* لون الخلفية */
+            color: #000080; /* لون النص */
+            border: 2px solid #000080; /* حدود الزر */
+            border-radius: 10px; /* تدوير الزوايا */
+            cursor: pointer;
+            text-align: center;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+          
+           
+        }
+
+        /* زر العودة */
+        .back-button {
+            margin-top: 20px;
+            width: 370px;
+            display: none;
+            padding: 7px;
+            font-size: 22px;
+            background-color: yellow;
+            color: black;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            cursor: pointer;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+        }
+
+        button:hover {
+            background-color: #00FFFF; /* لون الخلفية عند التمرير */
+        }
+
+        /* إخفاء الـ divs بشكل افتراضي */
+        .hidden {
+            display: none;
+        }
+
+        /* حاوية الأزرار */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .content-div {
+            background-color: white; /* خلفية للنص */
+            padding: 20px;
+            font-size: 11px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            float: none;
+            width: 325px;
+            border: 2px solid #000080;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080; /* لون النص */
+        }
+
+ header {
+            position: fixed;
+            height: 20px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width:100%;
+            background-color:WHITE;
+            color:  BLACK;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             font-size: 18px;
+             height: auto;
+             border: 2px solid #000080;
+               text-align: center;
+        }
+  
+.selected-info {
+           
+            background-color:  white;
+            padding: 8px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 370px;
+            
+            font-size: 15px;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات:ساترون</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0">اضغط هناء لأختيار اسم السياره</option>
+<option value="1">ASTRA</option>
+<option value="2">AURA</option>
+<option value="3">ION</option>
+<option value="4">L SERIES</option>
+<option value="5">L300</option>
+<option value="6">OUTLOOK</option>
+<option value="7">RELAY</option>
+<option value="8">S SERIES</option>
+<option value="9">SKY</option>
+<option value="10">VUE</option>
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>
+
+<div id="1Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>          
+<button onclick="goToDiv('DV1', '1Model')">2008-2009</button>
+</div>
+<div id="2Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '2Model')">2007-2009</button>   
+</div>
+<div id="3Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '3Model')">2003-2007</button>   
+</div>
+<div id="4Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '4Model')">2000-2003</button>  
+</div>
+<div id="5Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '5Model')">2004-2005</button>   
+</div>
+<div id="6Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', '6Model')">2007-2010</button>   
+</div>
+<div id="7Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>           
+<button onclick="goToDiv('DV1', '7Model')">2005-2007</button> 
+</div>
+<div id="8Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV3', '8Model')">1996-1999</button> 
+<button onclick="goToDiv('DV1', '8Model')">2000-2002</button> 
+</div>
+<div id="9Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '9Model')">2007-2010</button>   
+</div>
+<div id="10Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '10Model')">2002-2008</button>
+<button onclick="goToDiv('DV4', '10Model')">2009-2010</button>   
+</div>
+<div id="DV1" class="hidden content-div">
+<p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>    
+<li>إجراء خطوة بخطوة:</li>
+<li>هذه السيارة غير قابلة للبرمجة على متنها وتتطلب محترفًا مؤهلًا لبرمجة أجهزة التحكم عن بعد الخاصة بالمفتاح.</li>
+<li>1. حدد موقع صانع أقفال السيارات في منطقتك باستخدام رقم الهاتف أو ابحث عنه على الإنترنت.</li>
+<li>2. إذا كانت سيارتك لا تزال متحركة، فقد يوفر لك ذلك المال عن طريق القيادة إلى صانع الأقفال بدلاً من أن يأتي إليك.</li>
+<li>3. سيقوم صانع الأقفال بعد ذلك بتوصيل معدات كمبيوتر متخصصة بسيارتك من أجل برمجة جهاز التحكم عن بعد الخاص بالمفتاح الذكي.</li>
+</div>
+<div id="DV2" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li>Outlook </li>
+<li>كيفية برمجة Saturn Outlook </li>
+<li>تعليمات البرمجة خطوة بخطوة: </li>
+<li>استخدم هذا الإجراء للمركبات التي تحتوي على أزرار مركز معلومات السائق </li>
+<li>1</li>
+<li>أدخل المفتاح وأدره إلى وضع التشغيل </li>
+<li>حتى تتمكن من الوصول إلى مركز معلومات السائق </li>
+<li>2. اضغط على زر معلومات المركبة حتى تظهر الرسالة </li>
+<li>PRESS TO RELEARN REMOTE KEY </li>
+<li>3. اضغط على زر التعيين/إعادة الضبط حتى تظهر الرسالة REMOTE KEY LEARNING ACTIVE </li>
+<li>4</li>
+<li>اضغط مع الاستمرار على أزرار القفل وفتح القفل في جهاز التحكم عن بعد بدون مفتاح في نفس الوقت لمدة </li>
+<li>15 ثانية تقريبًا. سيصدر صوت جرس يشير إلى برمجة جهاز التحكم عن بعد. </li>
+<li>5</li>
+<li>لبرمجة أجهزة تحكم عن بعد إضافية في هذا الوقت، كرر الخطوة 4. </li>
+<li>يمكن لهذه المركبة برمجة ما يصل إلى </li>
+<li>ثمانية أجهزة تحكم عن بعد. </li>
+<li>6</li>
+<li>للخروج من وضع البرمجة، أوقف تشغيل المفتاح وأزل المفتاح. </li>
+<li>اختبر جهاز التحكم عن بعد. </li>
+<li> استخدم هذا الإجراء للمركبات </li>
+<li>التي لا تحتوي على أزرار مركز معلومات السائق </li>
+<li>للوصول إلى هذه الشاشة، يجب أن تكون المركبة في وضع الانتظار (P) مع وضع المفتاح في وضع التشغيل (بقدر ما يمكنك الذهاب إليه دون تشغيل المحرك) </li>
+<li>1. اضغط على ذراع إعادة تعيين عداد المسافات حتى تظهر رسالة </li>
+<li>RELEARN REMOTE KEY. </li>
+<li>2. اضغط مع الاستمرار على ذراع إعادة تعيين عداد المسافات لمدة ثلاث </li>
+<li>ثوانٍ. </li>
+<li>ستظهر الرسالة </li>
+<li>REMOTE KEY LEARNING ACTIVE. </li>
+<li>3</li>
+<li>اضغط مع الاستمرار على أزرار القفل وفتح القفل في جهاز التحكم عن بعد الأول بدون مفتاح في نفس الوقت لمدة 15 ثانية تقريبًا. سيصدر صوت جرس يشير إلى أن جهاز التحكم عن بعد مبرمج.. </li>
+<li>5</li>
+<li>للخروج من وضع البرمجة، أوقف تشغيل المفتاح وأزل المفتاح. </li>
+<li>اختبر أجهزة التحكم عن بعد. </li>
+</div>
+<div id="DV3" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p> 
+<li>m1</li>
+<li>كيفية برمجة سيارة Saturn S-Series </li>
+<li>تعليمات البرمجة خطوة بخطوة: </li>
+<li>هام: قبل الدخول في وضع البرمجة، يجب أن يكون بحوزتك جميع أجهزة الإرسال التي ستستخدمها في السيارة. بمجرد برمجة جهاز الإرسال، سيتم مسح جميع الرموز السابقة من الذاكرة. لن تعمل أجهزة الإرسال الأخرى حتى تقوم ببرمجة أجهزة الإرسال مرة أخرى. </li>
+<li>1</li>
+<li>أدخل المفاتيح في الإشعال واتركها في وضع إيقاف التشغيل. </li>
+<li>2</li>
+<li>حدد منفذ البيانات. </li>
+<li>3. تأكد من وجود دبابيس اتصال معدنية في الطرفين 8 و4. قم بتوصيل الطرفين 8 و4 بسلك توصيل مناسب</li>
+<li>(اترك أسلاك التوصيل متصلة طوال</li>
+<li>إجراء البرمجة). تأكد من معرفة الطرفين 8 و4.</li>
+<li>ستستجيب السيارة بقفل الأبواب ثم فتحها للإشارة إلى الدخول في وضع البرمجة. </li>
+<li>4. اضغط مع الاستمرار على زري القفل وفتح القفل معًا في أول جهاز تحكم عن بعد يتم برمجته.  حتى حوالي 30 ثانية، ستستجيب السيارة بقفل ثم فتح الأبواب. حرر الأزرار الموجودة على جهاز التحكم عن بعد. </li>
+<li>5. في غضون دقيقة واحدة، كرر الخطوة السابقة على أجهزة التحكم عن بعد المتبقية (إن وجدت بما في ذلك جهاز التحكم عن بعد القديم). </li>
+<li>6. قم بإزالة سلك التوصيل الموجود على منفذ البيانات (افصل 8 و4). </li>
+</div>
+<div id="DV4" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>        
+<li> مديل 2002-2008 </li>
+<li>كيفية برمجة سيارة Saturn Vue </li>
+<li>تعليمات البرمجة خطوة بخطوة: </li>
+<li>استخدم هذا الإجراء للسيارات التي تحتوي على أزرار مركز معلومات السائق </li>
+<li>1</li>
+<li>أدخل المفتاح وأدره إلى وضع التشغيل </li>
+<li>حتى تتمكن من الوصول إلى مركز معلومات السائق </li>
+<li>2. اضغط على زر معلومات السيارة حتى تظهر الرسالة </li>
+<li>PRESS TO RELEARN REMOTE KEY </li>
+<li>3. اضغط على زر الضبط/إعادة الضبط حتى تظهر الرسالة REMOTE KEY LEARNING ACTIVE </li>
+<li>4</li>
+<li>اضغط مع الاستمرار على أزرار القفل وفتح القفل في جهاز التحكم عن بعد بدون مفتاح في نفس الوقت لمدة </li>
+<li>15 ثانية تقريبًا. سيصدر صوت جرس يشير إلى برمجة جهاز التحكم عن بعد. </li>
+<li>5</li>
+<li>لبرمجة أجهزة تحكم عن بعد إضافية في هذا الوقت، كرر الخطوة 4. </li>
+<li>يمكن لهذه السيارة برمجة ما يصل إلى </li>
+<li>ثمانية أجهزة تحكم عن بعد. </li>
+<li>6</li>
+<li>للخروج من وضع البرمجة، أوقف تشغيل المفتاح وأزل المفتاح. </li>
+<li>اختبر جهاز التحكم عن بعد. </li>
+<li> استخدم هذا الإجراء للمركبات </li>
+<li>التي لا تحتوي على أزرار مركز معلومات السائق </li>
+<li>للوصول إلى هذه الشاشة، يجب أن تكون المركبة في وضع الانتظار (P) مع وضع المفتاح في وضع التشغيل (بقدر ما يمكنك الذهاب إليه دون تشغيل المحرك) </li>
+<li>1. اضغط على ذراع إعادة تعيين عداد المسافات حتى تظهر رسالة </li>
+<li>RELEARN REMOTE KEY. </li>
+<li>2. اضغط مع الاستمرار على ذراع إعادة تعيين عداد المسافات لمدة ثلاث </li>
+<li>ثوانٍ. </li>
+<li>ستظهر الرسالة </li>
+<li>REMOTE KEY LEARNING ACTIVE. </li>
+<li>3</li>
+<li>اضغط مع الاستمرار على أزرار القفل وفتح القفل في جهاز التحكم عن بعد الأول بدون مفتاح في نفس الوقت لمدة 15 ثانية تقريبًا. سيصدر صوت جرس يشير إلى برمجة جهاز التحكم عن بعد.. </li>
+<li>4. لبرمجة أجهزة تحكم عن بعد إضافية في هذا الوقت، كرر الخطوة 3. </li>
+<li>يمكن برمجة ثمانية أجهزة تحكم عن بعد في هذه المركبة كحد أقصى. </li>
+<li>5</li>
+<li>للخروج من وضع البرمجة، أوقف تشغيل المفتاح وأزل المفتاح. </li>
+<li>اختبر جهاز التحكم عن بعد.</li>
+</div>
+</div>
+
+ <script>
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+         document.getElementById('1Model').classList.add('hidden');
+        document.getElementById('2Model').classList.add('hidden');
+        document.getElementById('3Model').classList.add('hidden');
+        document.getElementById('4Model').classList.add('hidden');
+        document.getElementById('5Model').classList.add('hidden');
+        document.getElementById('6Model').classList.add('hidden');
+        document.getElementById('7Model').classList.add('hidden');
+        document.getElementById('8Model').classList.add('hidden');
+        document.getElementById('9Model').classList.add('hidden');
+        document.getElementById('10Model').classList.add('hidden');
+        
+        // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

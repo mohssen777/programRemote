@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <style>
+BODY {
+direction : rtl;
+font-family: Arial, sans-serif;
+    text-align: RIGHT;
+margin-top: 134px; /* اضبط القيمة حسب الحاجة */
+background-color:lightblue;
+font-weight: bold;
+  
+}    
+        /* تنسيق الحاوية الأساسية */
+        .container {
+            width: 100%;
+            background-color: white; /* خلفية بيضاء للحاوية */        
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* ظل حول الحاوية */
+        }
+
+        /* تنسيق القائمة المنسدلة */
+       select {
+display:flex;
+justify-content: center;
+position : relative;
+height : 40 px;
+margin-bottom:30px; 
+display: block;
+align-Item :center ;
+width :390px ;
+border-radius:20px;
+box-shadow: 0 10px 1px rgba(0,0,0.2);
+ color:BLACK;
+background-color:#00FFFF;
+font-size: 19px;
+  padding: 10px ;
+text-align:center;
+ border: 2px solid black;
+}
+        select:focus {
+            outline: yellow; /* إزالة إطار الفوكس */
+        }
+
+        /* تنسيق الأزرار */
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            width: 370px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 20px;
+            background-color: yellow; /* لون الخلفية */
+            color: #000080; /* لون النص */
+            border: 2px solid #000080; /* حدود الزر */
+            border-radius: 10px; /* تدوير الزوايا */
+            cursor: pointer;
+            text-align: center;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+          
+           
+        }
+
+        /* زر العودة */
+        .back-button {
+            margin-top: 20px;
+            width: 370px;
+            display: none;
+            padding: 7px;
+            font-size: 22px;
+            background-color: yellow;
+            color: black;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            cursor: pointer;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+        }
+
+        button:hover {
+            background-color: #00FFFF; /* لون الخلفية عند التمرير */
+        }
+
+        /* إخفاء الـ divs بشكل افتراضي */
+        .hidden {
+            display: none;
+        }
+
+        /* حاوية الأزرار */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .content-div {
+            background-color: white; /* خلفية للنص */
+            padding: 20px;
+            font-size: 11px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            float: none;
+            width: 325px;
+            border: 2px solid #000080;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080; /* لون النص */
+        }
+
+ header {
+            position: fixed;
+            height: 20px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width:100%;
+            background-color:WHITE;
+            color:  BLACK;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             font-size: 18px;
+             height: auto;
+             border: 2px solid #000080;
+               text-align: center;
+        }
+  
+.selected-info {
+            background-color:  white;
+            padding: 8px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 370px;
+            
+            font-size: 15px;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات:AODI</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0" selected="selected">اضغط هناء لأختيار اسم السياره</option>
+<option value="1">A1</option>
+<option value="2">A2</option>
+<option value="3">A3</option>
+<option value="4">A4</option>
+<option value="5">A5</option>
+<option value="6">A6</option>
+<option value="7">A7</option>
+<option value="8">A8</option>
+<option value="9">Q3</option>
+<option value="10">Q5</option>
+<option value="11">Q7</option>
+<option value="12">Q8</option>
+<option value="13">R8</option>
+<option value="14">RS3</option>
+<option value="15">RS4</option>
+<option value="16">RS5</option>
+<option value="17">RS7</option>
+<option value="18">S3</option>
+<option value="19">S4</option>
+<option value="20">S5</option>
+<option value="21">S6</option>
+<option value="22">S7</option>
+<option value="23">S8</option>
+<option value="24">SQ5</option>
+<option value="25">SQ7</option>
+<option value="26">SQ8</option>
+<option value="27">TT</option>
+<option value="28">TT-RS</option>
+<option value="29">TTS</option>
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>
+
+<div id="1Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '1Model')">2010-2018  </button> 
+</div>
+<div id="2Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', '2Model')">2000-2005 </button> 
+</div>
+<div id="3Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', '3Model')">1997-2003 </button> 
+<button onclick="goToDiv('DV1', '3Model')">2003-2018 </button> 
+<button onclick="goToDiv('DV1', '3Model')">2012-2021 </button> 
+</div>
+<div id="4Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', '4Model')">1997-2001 </button> 
+<button onclick="goToDiv('DV1', '4Model')">2001-2008 </button> 
+<button onclick="goToDiv('DV1', '4Model')">2008-2021 </button> 
+</div>
+<div id="5Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+ <button onclick="goToDiv('DV1', '5Model')">2007-2021</button> 
+</div>
+<div id="6Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', '6Model')">1997-2005 </button> 
+<button onclick="goToDiv('DV1', '6Model')">2006-2018 </button> 
+<button onclick="goToDiv('DV1', '6Model')">2012-2021 </button> 
+</div>
+<div id="7Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+ <button onclick="goToDiv('DV1', '7Model')">2010-2021</button> 
+</div>
+<div id="8Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', '8Model')"> 1994-2004</button>
+ <button onclick="goToDiv('DV1', '8Model')">2002-2009</button> 
+ <button onclick="goToDiv('DV1', '8Model')">2009-2021</button> 
+</div>
+<div id="9Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '9Model')">2007-2021</button>
+</div>
+<div id="10Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '10Model')">2009-2021</button>
+</div>
+<div id="11Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '11Model')">2007-2021 </button>
+</div>
+<div id="12Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '12Model')">2020-2021</button>
+</div>
+<div id="13Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '13Model')"> 2007-2018</button>
+</div>
+<div id="14Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '14Model')">2018-2020 </button>
+</div>
+<div id="15Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '15Model')"> 2006-2008</button>
+</div>
+<div id="16Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '16Model')">2009-2012</button>
+<button onclick="goToDiv('DV1', '16Model')">2013-2021</button>
+
+</div>
+<div id="17Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '17Model')"> 2018-2020 </button>
+</div>
+<div id="18Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '18Model')"> 2004-2006</button>
+<button onclick="goToDiv('DV1', '18Model')">2018-2021</button>
+</div>
+
+<div id="19Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '19Model')"> 2018-2021 </button>
+</div>
+<div id="20Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '20Model')">2009-2012</button>
+<button onclick="goToDiv('DV1', '20Model')">2013-2021</button>
+
+</div>
+<div id="21Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '21Model')">2009-2012</button>
+<button onclick="goToDiv('DV1', '21Model')">2013-2021</button>
+</div>
+<div id="22Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '22Model')">2004-2012</button>
+<button onclick="goToDiv('DV1', '22Model')">2013-2021</button>
+</div>
+<div id="23Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '23Model')">2018-2021</button>
+</div>
+<div id="24Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P> 
+<button onclick="goToDiv('DV1', '24Model')">2020-2021</button>
+</div>
+<div id="25Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '25Model')">2020</button>
+</div>
+<div id="26Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', '26Model')">1999-2006</button>
+<button onclick="goToDiv('DV1', '26Model')">2009-2021</button>
+</div>
+<div id="27Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '27Model')"> 2018-2021</button>
+</div>
+<div id="28Model" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV1', '28Model')"> 2018-2021</button>
+</div>    
+    <!-- Divs for car models -->
+<!-- Slider Poster -->
+<div id="DV1" class="hidden content-div"><p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>
+<LI>كيفية برمجة سيارة Audi </LI>
+<LI>إجراء خطوة بخطوة:</LI>
+<LI>هذه السيارة غير قابلة للبرمجة على متنها وتتطلب محترفًا مؤهلًا لبرمجة أجهزة التحكم عن بعد بالمفتاح الذكي.</LI>
+<LI>1. حدد موقع صانع أقفال السيارات في منطقتك باستخدام رقم الهاتف أو ابحث عنه على الإنترنت.</LI>
+<LI>2. إذا كانت سيارتك لا تزال متحركة، فقد يوفر لك ذلك المال عن طريق القيادة إلى صانع الأقفال بدلاً من أن يأتي إليك.</LI>
+<LI>3. سيقوم صانع الأقفال بعد ذلك بتوصيل معدات كمبيوتر متخصصة بسيارتك من أجل برمجة جهاز التحكم عن بعد بالمفتاح الذكي.</LI>
+
+</div>
+<div id="DV2" class="hidden content-div"><p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>
+<LI>الإجراء 1</LI>
+<LI>1. قم بتشغيل الإشعال واترك المفتاح في الإشعال.</LI>
+<LI>2. قم بقفل السيارة ميكانيكيًا باستخدام باب السائق باستخدام مفتاح ثانٍ.</LI>
+<LI>3. باستخدام جهاز التحكم عن بعد، اضغط على زر إلغاء القفل مرة واحدة، وسيصدر صوت البوق.</LI>
+<LI>4. انتظر 10 ثوانٍ واضغط على زر إلغاء القفل مرة واحدة لتنشيط إجراء الترميز.</LI>
+<LI> ملاحظة: عند برمجة أجهزة التحكم عن بعد الإضافية، يكون الإجراء هو نفسه، باستثناء الضغط على زر إلغاء القفل: </LI>
+<LI> مرتين لجهاز التحكم عن بعد رقم اثنين</LI>
+<LI>+ 3 مرات لجهاز التحكم عن بعد رقم ثلاثة. </LI>
+<LI>+ 4 مرات لجهاز التحكم عن بعد رقم أربعة. </LI>
+<LI>5. أوقف تشغيل الإشعال. </LI>
+<LI>6. أخرج المفتاح من الإشعال وتحقق من التشغيل. </LI>
+<LI>7. يمكن تكرار إجراء الترميز حتى 4 مرات لأجهزة التحكم عن بعد الإضافية. </LI>
+<LI>8. يجب إيقاف تشغيل الإشعال بين برمجة كل جهاز تحكم عن بعد. </LI>
+<LI>الإجراء 2 </LI>
+<LI>1. قم بتشغيل الإشعال (لا تقم بتشغيله). </LI>
+<LI>2. أدخل مفتاحًا ثانيًا في قفل باب السائق. </LI>
+<LI>3. أدر إلى وضع إلغاء القفل (عكس اتجاه عقارب الساعة) واستمر في الضغط حتى يصدر صوت تنبيه ثلاث مرات، لمدة 10-15 ثانية تقريبًا، ثم عد إلى الوضع المركزي (اترك القفل). </LI>
+<LI> 4. ثم اضغط على أحد أزرار جهاز التحكم عن بعد (إذا كنت تريد برمجة أكثر من جهاز تحكم عن بعد، فاضغط على كل جهاز تحكم عن بعد مرة واحدة للبرمجة) </LI>
+<LI>5. سيصدر البوق صوت تنبيه لكل جهاز تحكم عن بعد تمت برمجته (صوت تنبيه واحد لجهاز التحكم عن بعد رقم واحد، واثنتان لجهاز التحكم عن بعد رقم 2، وهكذا) </LI>
+<LI>6. ثم أدر مفتاح الباب عكس اتجاه عقارب الساعة حتى يصدر البوق صوت تنبيه ثلاث مرات لإلغاء تنشيط وضع البرمجة، ثم قم بإزالة مفتاح الإشعال. </LI>
+<LI>7. اختبر جميع أجهزة التحكم عن بعد.</LI>
+</div>
+</div>
+<script>
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+       document.getElementById('1Model').classList.add('hidden');
+       document.getElementById('2Model').classList.add('hidden');
+       document.getElementById('3Model').classList.add('hidden');
+       document.getElementById('4Model').classList.add('hidden');
+       document.getElementById('5Model').classList.add('hidden');
+       document.getElementById('6Model').classList.add('hidden');
+       document.getElementById('7Model').classList.add('hidden');
+       document.getElementById('8Model').classList.add('hidden');
+       document.getElementById('9Model').classList.add('hidden');
+       document.getElementById('10Model').classList.add('hidden');
+       document.getElementById('11Model').classList.add('hidden');
+       document.getElementById('12Model').classList.add('hidden');
+       document.getElementById('13Model').classList.add('hidden');
+       document.getElementById('14Model').classList.add('hidden');
+       document.getElementById('15Model').classList.add('hidden');
+       document.getElementById('16Model').classList.add('hidden');
+       document.getElementById('17Model').classList.add('hidden');
+       document.getElementById('18Model').classList.add('hidden');
+       document.getElementById('19Model').classList.add('hidden');
+       document.getElementById('20Model').classList.add('hidden');
+       document.getElementById('21Model').classList.add('hidden');
+       document.getElementById('22Model').classList.add('hidden');
+       document.getElementById('23Model').classList.add('hidden');
+       document.getElementById('24Model').classList.add('hidden');
+       document.getElementById('25Model').classList.add('hidden');
+       document.getElementById('26Model').classList.add('hidden');
+       document.getElementById('27Model').classList.add('hidden');
+       document.getElementById('28Model').classList.add('hidden');
+  
+     // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>

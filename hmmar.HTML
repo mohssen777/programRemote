@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <style>
+BODY {
+direction : rtl;
+font-family: Arial, sans-serif;
+    text-align: RIGHT;
+margin-top: 134px; /* اضبط القيمة حسب الحاجة */
+background-color:lightblue;
+font-weight: bold;
+  
+}    
+        /* تنسيق الحاوية الأساسية */
+        .container {
+            width: 100%;
+            background-color: white; /* خلفية بيضاء للحاوية */        
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* ظل حول الحاوية */
+        }
+
+        /* تنسيق القائمة المنسدلة */
+       select {
+display:flex;
+justify-content: center;
+position : relative;
+height : 40 px;
+margin-bottom:30px; 
+display: block;
+align-Item :center ;
+width :390px ;
+border-radius:20px;
+box-shadow: 0 10px 1px rgba(0,0,0.2);
+ color:BLACK;
+background-color:#00FFFF;
+font-size: 19px;
+  padding: 10px ;
+text-align:center;
+ border: 2px solid black;
+}
+        select:focus {
+            outline: yellow; /* إزالة إطار الفوكس */
+        }
+
+        /* تنسيق الأزرار */
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            width: 370px;
+            margin-bottom: 10px;
+            padding: 15px;
+            font-size: 20px;
+            background-color: yellow; /* لون الخلفية */
+            color: #000080; /* لون النص */
+            border: 2px solid #000080; /* حدود الزر */
+            border-radius: 10px; /* تدوير الزوايا */
+            cursor: pointer;
+            text-align: center;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+          
+           
+        }
+
+        /* زر العودة */
+        .back-button {
+            margin-top: 20px;
+            width: 370px;
+            display: none;
+            padding: 7px;
+            font-size: 22px;
+            background-color: yellow;
+            color: black;
+            border: 2px solid #000080;
+            border-radius: 10px;
+            cursor: pointer;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+        }
+
+        button:hover {
+            background-color: #00FFFF; /* لون الخلفية عند التمرير */
+        }
+
+        /* إخفاء الـ divs بشكل افتراضي */
+        .hidden {
+            display: none;
+        }
+
+        /* حاوية الأزرار */
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        .content-div {
+            background-color: white; /* خلفية للنص */
+            padding: 20px;
+            font-size: 11px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: right;
+            float: none;
+            width: 325px;
+            border: 2px solid #000080;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            
+        }
+
+        .content-div p {
+            margin: 0;
+            line-height: 1.5;
+            color: #000080; /* لون النص */
+        }
+
+ header {
+            position: fixed;
+            height: 20px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width:100%;
+            background-color:WHITE;
+            color:  BLACK;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             font-size: 18px;
+             height: auto;
+             border: 2px solid #000080;
+               text-align: center;
+        }
+  
+.selected-info {
+          
+            background-color:  white;
+            padding: 8px;
+            border: 3px solid #000080;
+            border-radius: 10px;
+            width: 370px;
+            
+            font-size: 15px;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+ <header>
+ <div class="header-content">
+<label for="carSelect">قائمـــــــــــــــــة أسماء السيارات:الهمـــــــــر</label>
+<select id="carSelect" onchange="showModel()">
+<option value="0">اضغط هناء لأختيار اسم السياره</option>
+<option value="A">H1</option>
+<option value="B">H2</option>
+
+</select>
+</header>
+ <div class="  selected-info">
+ <!-- زر العودة -->
+    <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>
+        
+<div id="AModel" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+        <button onclick="goToDiv('DV1', 'AModel')">1993-2006</button>
+        
+</div>
+<div id="BModel" class="hidden button-container"><P>اختار المديــــــــــــــل</P>
+<button onclick="goToDiv('DV2', 'BModel')">2003-2007</button>
+<button onclick="goToDiv('DV3', 'BModel')">2008-2009</button>
+<button onclick="goToDiv('DV4', 'BModel')">2008</button> 
+<button onclick="goToDiv('DV5', 'BModel')">2009</button> 
+ 
+        </div>
+
+<div id="DV1" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>      
+<li> لايوجد بيانات قريبا</li>
+</ul>
+</div>
+<div id="DV2" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li>2003-2007</li>
+<li>1. أغلق جميع الأبواب.</li>
+<li>  2. أدخل المفتاح في الإشعال.</li>
+<li>  3. اضغط مع الاستمرار على زر Power UNLOCK الموجود على لوحة باب السائق حتى يُطلب منك تحريره في الخطوة 9.</li>
+<li>  4. قم بتنفيذ الخطوات من 5 إلى 8 بسرعة.</li>
+<li>  5. أدر مفتاح التشغيل إلى وضع التشغيل (لا تقم بتشغيل المحرك).</li>
+<li>  6. أدر الإشعال إلى وضع إيقاف التشغيل.</li>
+<li>  7. أدر مفتاح التشغيل إلى وضع التشغيل (لا تقم بتشغيل المحرك).</li>
+<li>  8. أدر الإشعال إلى وضع إيقاف التشغيل.</li>
+<li>  9. حرر زر Power UNLOCK الموجود على لوحة الباب.</li>
+<li>  ملاحظة: يجب أن يتم قفل أقفال الأبواب وفتحها.</li>
+<li>  10. اضغط مع الاستمرار على زري LOCK وUNLOCK الموجودين على مفتاح التحكم عن بعد حتى يتم قفل الأبواب وفتحها.</li>
+<li>  ملاحظة: قد يستغرق هذا ما يصل إلى 30 ثانية.</li>
+<li>  11. كرر الخطوة 10 على الفور لكل أجهزة التحكم عن بعد الإضافية وجميع أجهزة التحكم عن بعد الموجودة.</li>
+<li>  12. أدر مفتاح التشغيل إلى وضع التشغيل للخروج من وضع البرمجة.</li>
+<li>  13. اختبار جميع أجهزة الإرسال عن بعد للتشغيل.</li>
+</ul>
+</div>
+<div id="DV3" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li> 2008-2009</li>
+<li> 1. قم بتشغيل الإشعال.</li>
+<li>  2. اضغط مع الاستمرار على زر معلومات السيارة حتى تظهر على الشاشة اضغط لإعادة تعلم مفتاح التحكم عن بعد.</li>
+<li>  ملاحظة : يحتوي زر معلومات السيارة على صورة مركبة وبجوارها الحرف i، وهو موجود على يمين عجلة القيادة.</li>
+<li>  3. اضغط على زر SET/RESET حتى يتم عرض REMOTE KEY LEARNING ACTIVE.</li>
+<li>  ملاحظة: يحتوي زر الضبط/إعادة الضبط على علامة ""، وهو موجود أسفل زر المعلومات مباشرة.</li>
+<li>  4. اضغط مع الاستمرار على زري LOCK وUNLOCK الموجودين على أول جهاز تحكم عن بعد سيتم برمجته لمدة 15 ثانية.</li>
+<li>  5. يجب أن يصدر صوت للإشارة إلى صحة البرمجة.</li>
+<li>  6. كرر الخطوتين 4 و5 لجميع أجهزة التحكم عن بعد المتبقية.</li>
+<li>  7. قم بإيقاف تشغيل الإشعال.</li>
+<li>  8. اختبر جميع أجهزة التحكم عن بعد.</li>
+</ul>
+</div>
+<div id="DV4" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li>2008</li>
+<li>كيفية برمجة هامر H2 </li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات المزودة بأزرار مركز معلومات السائق</li>
+<li>1</li>
+<li> أدخل المفتاح وانتقل إلى ON</li>
+<li> الموضع حتى تتمكن من الوصول إلى مركز معلومات السائق</li>
+<li> 2. اضغط على زر معلومات السيارة حتى</li>
+<li> اضغط لإعادة التعرف على شاشات المفاتيح البعيدة</li>
+<li> 3. اضغط على زر الضبط/إعادة الضبط حتى</li>
+<li> التعلم عن بعد مفتاح نشط</li>
+<li> يعرض</li>
+<li> 4. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على جهاز التحكم عن بعد بدون مفتاح في نفس الوقت لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد مبرمج.</li>
+<li> 5. لبرمجة أجهزة تحكم عن بعد إضافية في هذا الوقت، كرر الخطوة 4. يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 6. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار جهاز التحكم عن بعد (أجهزة التحكم عن بعد).</li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات</li>
+<li> بدون أزرار مركز معلومات السائقين</li>
+<li> للوصول إلى هذه الشاشة، يجب أن تكون السيارة في وضع الوقوف (P) مع وجود المفتاح في وضع التشغيل (إلى أقصى حد يمكنك الوصول إليه دون تدوير المحرك).</li>
+<li> 1. اضغط على ساق إعادة ضبط عداد مسافات الرحلة حتى</li>
+<li> إعادة تعلم شاشات REMOTE KEY.</li>
+<li>2</li>
+<li> اضغط مع الاستمرار على ساق إعادة ضبط عداد مسافة الرحلة لمدة ثلاثة</li>
+<li> ثواني.  الرسالة</li>
+<li> سيتم عرض REMOTE KEY LEARNING ACTIVE.</li>
+<li> 3. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على أول جهاز تحكم عن بعد بدون مفتاح في نفس الوقت</li>
+<li> وقت</li>
+<li> لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد موجود</li>
+<li> مبرمجة.</li>
+<li> 4. لبرمجة أجهزة التحكم عن بعد الإضافية في هذا الوقت، كرر الخطوة 3.</li>
+<li> يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 5. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار أجهزة التحكم عن بعد.</li>
+
+</ul>
+</div>
+<div id="DV5" class="hidden content-div"> <p><CENTER>بيانات البرمجـــــــــــــــــــــــــــــه</CENTER></p>       
+<li>2009</li>
+<li>كيفية برمجة هامر H2 </li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات المزودة بأزرار مركز معلومات السائق</li>
+<li>1</li>
+<li> أدخل المفتاح وانتقل إلى ON</li>
+<li> الموضع حتى تتمكن من الوصول إلى مركز معلومات السائق</li>
+<li> 2. اضغط على زر معلومات السيارة حتى</li>
+<li> اضغط لإعادة التعرف على شاشات المفاتيح البعيدة</li>
+<li> 3. اضغط على زر الضبط/إعادة الضبط حتى</li>
+<li> التعلم عن بعد مفتاح نشط</li>
+<li> يعرض</li>
+<li> 4. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على جهاز التحكم عن بعد بدون مفتاح في نفس الوقت لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد مبرمج.</li>
+<li> 5. لبرمجة أجهزة تحكم عن بعد إضافية في هذا الوقت، كرر الخطوة 4. يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 6. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار جهاز التحكم عن بعد (أجهزة التحكم عن بعد).</li>
+<li> الإجراء خطوة بخطوة:</li>
+<li> استخدم هذا الإجراء للمركبات</li>
+<li> بدون أزرار مركز معلومات السائقين</li>
+<li> للوصول إلى هذه الشاشة، يجب أن تكون السيارة في وضع الوقوف (P) مع وجود المفتاح في وضع التشغيل (إلى أقصى حد يمكنك الوصول إليه دون تدوير المحرك).</li>
+<li> 1. اضغط على ساق إعادة ضبط عداد مسافات الرحلة حتى</li>
+<li> إعادة تعلم شاشات REMOTE KEY.</li>
+<li>2</li>
+<li> اضغط مع الاستمرار على ساق إعادة ضبط عداد مسافة الرحلة لمدة ثلاثة</li>
+<li> ثواني.  الرسالة</li>
+<li> سيتم عرض REMOTE KEY LEARNING ACTIVE.</li>
+<li> 3. اضغط مع الاستمرار على أزرار القفل وفتح القفل الموجودة على أول جهاز تحكم عن بعد بدون مفتاح في نفس الوقت</li>
+<li> وقت</li>
+<li> لمدة 15 ثانية تقريبًا.  سيصدر صوت رنين يشير إلى أن جهاز التحكم عن بعد موجود</li>
+<li> مبرمجة.</li>
+<li> 4. لبرمجة أجهزة التحكم عن بعد الإضافية في هذا الوقت، كرر الخطوة 3.</li>
+<li> يمكن أن تحتوي هذه السيارة على ثمانية أجهزة تحكم عن بعد مبرمجة كحد أقصى.</li>
+<li> 5. للخروج من وضع البرمجة، قم بإيقاف تشغيل المفتاح وإزالة المفتاح.  اختبار أجهزة التحكم عن بعد.</li>
+</div>
+</div>
+ <script>
+    var currentModelId = ""; // لتعقب الموديل الحالي
+
+document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من أن العناصر التي نريد إخفاءها مخفية عند تحميل الصفحة
+    document.querySelector('.selected-info').style.display = 'none';
+});
+
+    function showModel() {
+        // إخفاء جميع أقسام النماذج
+        document.getElementById('AModel').classList.add('hidden');
+        document.getElementById('BModel').classList.add('hidden');
+        
+          // إخفاء جميع divs الخاصة بالبيانات
+    var allContentDivs = document.querySelectorAll('.content-div');
+    allContentDivs.forEach(function(div) {
+        div.classList.add('hidden');  // إخفاء كل divs الموجودة
+    });
+
+    // إظهار القسم المناسب بناءً على نوع السيارة المختار
+    var car = document.getElementById('carSelect').value;
+    if (car) {
+        currentModelId = car + 'Model'; // حفظ الموديل الحالي
+        document.getElementById(currentModelId).classList.remove('hidden');
+        document.querySelector('.selected-info').style.display = 'block'; // إظهار selected-info عند اختيار نموذج
+        document.getElementById('backButton').style.display = 'none'; // إخفاء زر العودة
+    }
+}
+    function goToDiv(divId, modelId) {
+        // إخفاء جميع divs
+        var allContentDivs = document.querySelectorAll('.content-div');
+        allContentDivs.forEach(function(div) {
+            div.classList.add('hidden');  // إخفاء كل divs الموجودة
+        });
+
+        // إظهار الـ div المطلوب
+        document.getElementById(divId).classList.remove('hidden');
+
+        // إخفاء الأزرار الأخرى
+        document.getElementById(modelId).classList.add('hidden');
+        document.getElementById('backButton').style.display = 'block'; // إظهار زر العودة
+    }
+
+    function goBack() {
+        // إخفاء جميع divs المتعلقة بالنماذج
+        document.querySelectorAll('.content-div').forEach(function(div) {
+            div.classList.add('hidden');
+        });
+
+        // إعادة عرض الموديل الحالي فقط
+        if (currentModelId) {
+            document.getElementById(currentModelId).classList.remove('hidden');
+        }
+
+        // إخفاء زر العودة
+        document.getElementById('backButton').style.display = 'none';
+    }
+</script>
+</body>
+</html>
