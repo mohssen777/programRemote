@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تصميم صفحة الشعارات</title>
+    <title>تعلم البرمجه</title>
     <style>
+        /* جميع التنسيقات الأخرى */
         * {
             margin: 0;
             padding: 0;
@@ -12,40 +13,91 @@
         }
 
         body {
-            display: flex;
-            height: 100vh;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            flex-direction: column;
-        }
-
-        /* الهيدر */
-        header {
+            background-color: #00ffff;
            
-            position: fixed;
-            height: 100px;
-            top: 0;
+        }
+  @keyframes slide {
+            0% { transform: translateX(0); }
+            30% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            90% { transform: translateX(0); }
+        }
+
+       
+        /* Existing Car Cards Styles */
+        .container {
             width: 100%;
-            background-color: lightblue;
-            color: black;
-            z-index: 1000;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
-            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            border: 2px solid black;
+            max-width:100%;
+            margin: 0 auto;
             text-align: center;
-            font-size: 25px;
-        }
-       .top-header h1 {
-            margin-right: auto;
         }
 
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-         /* زر فتح القائمة في الجانب الأيسر */
+        .sub-header {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(6px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid black;
+             
+        }
+
+        .card img {
+            width: 100px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+        
+        .card span {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #00ffff;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #333;
+            border: 2px solid black; 
+             margin-right: auto;
+        }
+
+        .top-bar h1 {
+            margin-right: auto; /* لنقل العنوان إلى الجانب الآخر */
+        }
+
+        /* زر فتح القائمة في الجانب الأيسر */
         .open-btn {
             position: left;
             left: 10px; /* وضع الزر في الجانب الأيسر */
@@ -115,171 +167,232 @@
             color: yellow; /* تغيير لون عند التمرير */
             transform: scale(1.1); /* تكبير قليلاً عند التمرير */
         }
-        /* الجزء الرئيسي */
-        .main-content {
-            flex: 1;
-            display: flex;
-            overflow-y: scroll;
-        }
-        /* قسم الشعارات */
-        .logo-section {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 110px; /* لضمان أن قسم الشعارات يبدأ أسفل الهيدر */
+
+  /* Image Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            margin: 10px 0;
+             border: 2px solid black;
+             border-radius: 5px;
+           
         }
 
-        .logo-section h1 {
-            margin-bottom: 20px;
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: slide 10s infinite;
+            border: 2px solid red;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            30% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            90% { transform: translateX(0); }
+        }
+
+       
+        /* Existing Car Cards Styles */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
             color: #333;
         }
 
-        .logo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 15px;
-            justify-items: center;
-            width: 100%;
-            margin-top: 20px;
+        .sub-header {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #666;
         }
 
-        .logo-card {
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 10px;
-            width: 110px;
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
             transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
             border: 2px solid black;
+             
         }
 
-        .logo-card img {
-            width: 90px;
-            height: 90px;
+        .card img {
+            width: 60px;
+            height: 60px;
             object-fit: contain;
+            margin-bottom: 8px;
         }
-
-        /* استعلامات الوسائط (Media Queries) */
-        /* على الشاشات الصغيرة (أقل من 768px) */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            /* تغيير الشريط الجانبي ليظهر في صف واحد أسفل الهيدر */
-            .sidebar {
-                flex-direction: row;
-                justify-content: space-around;
-                width: 100%;
-                padding: 10px 0;
-                margin-top: 80px; /* المسافة بين الهيدر والقائمة */
-            }
-
-            .logo-section {
-                margin-top: 140px; /* زيادة المسافة بين الهيدر والقسم الخاص بالشعارات */
-            }
-
-            header {
-                font-size: 18px;
-            }
-
-            .sidebar a {
-                font-size: 16px;
-                width: auto;
-            }
-
-            .logo-grid {
-                margin-top: 20px;
-            }
-        }
-
-        /* على الشاشات الكبيرة (أكبر من 1024px) */
-        @media (min-width: 1024px) {
-            .logo-grid {
-                margin-top: 50px;
-            }
+        
+        .card span {
+            font-size: 0.9rem;
+            color: #333;
         }
     </style>
 </head>
 <body>
 
-    <header>
- <!-- الشريط العلوي -->
+    <!-- Top Bar -->
     <div class="top-bar">
-        <span class="open-btn" onclick="openSidebar()">☰</span>
-        
+        <span class="open-btn" onclick="openSidebar()">☰</span> <!-- زر فتح القائمة -->
+        <h1>تعلم البرمجه</h1>
     </div>
 
-    <!-- الشريط الجانبي -->
+    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
-   
-
-          <a href="#" class="close-btn" onclick="closeSidebar()">×</a>
+        <a href="#" class="close-btn" onclick="closeSidebar()">×</a>
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الرئيسية</a>
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الملف الشخصي</a>
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الإعدادات</a>
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">سياسة الخصوصية</a>
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">معلومات حول التطبيق</a>
     </div>
-</header>
+ <!-- Image Slider -->
+    <div class="slider">
+        <img src="https://f.top4top.io/p_3081vjkay1.jpg" alt="ضع اعلانك هنا">
+        <img src="https://f.top4top.io/p_3081vjkay1.jpg" alt="ضع اعلانك هنا">
+    </div>
 
-    <!-- قسم الشعارات -->
-    <div class="logo-section">
-        <h1>الشعارات</h1>
-        <div class="logo-grid">
-            <a href="TOYOTA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
-            </a>
-            <a href="KIA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_308141rpm1.jpg" alt="Kia">
-            </a>
-            <a href="SOUPRA.HTML" class="logo-card">
-                <img src="https://g.top4top.io/p_3081nz8hp1.jpg" alt="Soupra">
-            </a>
-            <a href="SATRON.HTML" class="logo-card">
-                <img src="https://a.top4top.io/p_3081sm3cw1.jpg" alt="Satron">
-            </a>
+   
+    <!-- Car Categories -->
+      <div class="container">
+        
+        <div class="grid">
+            <!-- Car brand cards with links -->
             
-            <a href="TOYOTA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
+  <a href="TOYOTA.HTML"><center><img class="card" src="https://f.top4top.io/p_3081ur30h1.jpg" width="110px" height="110px"></center></a> 
+  <a href="KIA.HTML"><center><img class="card " src="https://f.top4top.io/p_308141rpm1.jpg" width="110px" height="110px"></center></a>  
+
+
+
+<a href="SOUPRA.HTML"><center><img class="card " src="https://g.top4top.io/p_3081nz8hp1.jpg" width="110px" height="110px"></center></a> 
+<a href="SATRON.HTML"><center><img class="card " src="https://a.top4top.io/p_3081sm3cw1.jpg" width="110px" height="110px"></center></a></td >
+
+
+
+<a href="LEKZZ.HTML"><center><img class="card " src="https://a.top4top.io/p_3094zi8c81.jpg " width="110px" height="110px"></center></a></td >
+<a href="JEEP.HTML"><center><img class="card " src="https://a.top4top.io/p_30949rzoe1.jpg " width="110px" height="110px"></center></a></td >
+
+
+<a href="BMW.HTML"><center><img class="card " src="https://l.top4top.io/p_3113tsnnu1.jpg " width="110px" height="110px"></center></a>
+<a href="GMC.HTML"><center><img class="card " src="https://j.top4top.io/p_3094zerhd1.jpg " width="110px" height="110px"></center></a>
+
+
+<a href="dihatso.HTML"><center><img class="card " src="https://g.top4top.io/p_3081ksmaz2.jpg" width="110px" height="110px"></center></a>
+<a href="hionda.HTML"><center><img class="card " src="https://f.top4top.io/p_30940zqed1.jpg " width="110px" height="110px"></center></a>
+
+
+<a href="MISTBOSHI.HTML"><center><img class="card " src="https://f.top4top.io/p_3094bfotl1.jpg " width="110px" height="110px"></center></a>
+<a href="HEOANDAI.HTML"><center> <img class="card " src="https://f.top4top.io/p_3081c6fde3.jpg" width="110px" height="110px"></center></a>
+
+
+<a href="volvo.HTML"><center><img class="card " src="https://j.top4top.io/p_3081iwjrp3.jpg" width="110px" height="110px"></center></a>
+<a href="isuzu.HTML"> <center><img class="card " src=" https://g.top4top.io/p_3113fq8ge1.jpg " width="110px" height="110px"></center>
+
+
+<a href="NISSAN.HTML"><center><img class="card " src="https://f.top4top.io/p_3094gcizn1.jpg " width="110px" height="110px"></center></a>
+<a href="SOZOKI.HTML"><center><img class="card " src="https://f.top4top.io/p_3081vjkay1.jpg" width="110px" height="110px"></center></a></td >
+
+
+
+<a href="DAEW.HTML"><center><img class="card " src="https://l.top4top.io/p_3094yxj6s1.jpg " width="110px" height="110px"></center></a></td >
+<a href="SHAVER.HTML"><center><img class="card " src="https://j.top4top.io/p_30812grcf1.jpg" width="110px" height="110px"></center></a></td >
+
+
+<a href="BUICK.HTML"><center><img class="card " src="https://f.top4top.io/p_3081ojcnb1.jpg" width="110px" height="110px"></center></a></td >
+<a href="Citroen.HTML"><center><img class="card " src="https://a.top4top.io/p_3081n79kw1.jpg" width="110px" height="110px"></center></a></td >
+
+
+<a href="hmmar.HTML"><center><img class="card " src="https://j.top4top.io/p_30942w7ni1.jpg " width="110px" height="110px"></center></a>
+<a href="Jagoar.HTML"><center><img class="card " src="https://a.top4top.io/p_30943jby61.jpg " width="110px" height="110px"></center></a>
+
+
+
+<a href="Landrovr.HTML"><center><img class="card " src="https://j.top4top.io/p_3094tlz9i1.jpg " width="110px" height="110px"></center></a>
+<a href="fiat.HTML"><center><img class="card " src="https://g.top4top.io/p_30945nrxv1.jpg " width="110px" height="110px"></center></a>
+
+
+<a href="AODI.HTML"><center><img class="card " src="https://l.top4top.io/p_3113estl11.jpg " width="110px" height="110px"></center></a>
+<a href="mini.HTML"><center><img class="card " src="https://a.top4top.io/p_3094dr2jd1.jpg " width="110px" height="110px"></center></a>
+
+
+<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3081a3sqd1.jpg" width="110px" height="110px"></center></a>
+<a href="Fraasha.html"><center><img class="card " src="https://j.top4top.io/p_30948k3ia1.jpg " width="110px" height="110px"></center></a>
+
+
+<a href="Fraasha.html"><center><img class="card " src="https://g.top4top.io/p_3113pqrv61.jpg " width="110px" height="110px"></center></a>
+<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3113vj7gi1.jpg " width="110px" height="110px"></center>
+
+
+<a href="Fraasha.html"><center><img class="card " src="https://a.top4top.io/p_3094mkvwy1.jpg " width="110px" height="110px"></center></a>
+<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3094uncal1.jpg " width="110px" height="110px"></center></a>
+
+
+
+<a href="Pontiac.HTML"><center><img class="card " src="https://f.top4top.io/p_31134v5iw1.jpg " width="110px" height="110px"></center></a>
+<a href="CADILLAC.HTML"> <center><img class="card " src=" https://j.top4top.io/p_311324uzz1.jpg " width="110px" height="110px"></center></a>
+
+
+
+<a href="scion.HTML"><center><img class="card " src="https://g.top4top.io/p_31136yo681.jpg " width="110px" height="110px"></center></a>
+<a href="EGLE.HTML"><center><img class="card " src="https://a.top4top.io/p_3113d37jg1.jpg " width="110px" height="110px"></center></a>
+
+
+
             </a>
-            <a href="KIA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_308141rpm1.jpg" alt="Kia">
-            </a>
-            <a href="SOUPRA.HTML" class="logo-card">
-                <img src="https://g.top4top.io/p_3081nz8hp1.jpg" alt="Soupra">
-            </a>
-            <a href="SATRON.HTML" class="logo-card">
-                <img src="https://a.top4top.io/p_3081sm3cw1.jpg" alt="Satron">
-            </a>
-            <a href="TOYOTA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
-            </a>
-            <a href="KIA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_308141rpm1.jpg" alt="Kia">
-            </a>
-            <a href="SOUPRA.HTML" class="logo-card">
-                <img src="https://g.top4top.io/p_3081nz8hp1.jpg" alt="Soupra">
-            </a>
-            <a href="SATRON.HTML" class="logo-card">
-                <img src="https://a.top4top.io/p_3081sm3cw1.jpg" alt="Satron">
-            </a>
-            <!-- أضف المزيد من الشعارات هنا -->
+            <!-- Add more cards as needed with links -->
         </div>
     </div>
-<script>
+
+    <script>
         function openSidebar() {
             document.getElementById("sidebar").style.width = "250px";
         }
 
         function closeSidebar() {
             document.getElementById("sidebar").style.width = "0";
+        }
+ // متغيرات لتتبع السحب
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // الكشف عن بدء السحب
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        // الكشف عن إنهاء السحب
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        // التعامل مع السحب
+        function handleSwipe() {
+            if (touchEndX < touchStartX && touchStartX - touchEndX > 100) {
+                openSidebar();  // إذا سحب المستخدم من اليمين إلى اليسار، نفتح القائمة
+            }
+            if (touchEndX > touchStartX && touchEndX - touchStartX > 100) {
+                closeSidebar();  // إذا سحب المستخدم من اليسار إلى اليمين، نغلق القائمة
+            }
         }
     </script>
 
