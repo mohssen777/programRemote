@@ -1,316 +1,316 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تعلم البرمجه</title>
+    <title>الرئيسيه</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+       body {
+  background-color:#00ffff;
+  font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+margin-top: 120px; /* اضبط القيمة حسب الحاجة */
+overflow-x: hidden; /* لمنع تمرير الصفحة بشكل أفقي */
+font-size: `10px;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #00ffff;
+       header {
+            position: fixed;
+            height: 80px; /* تأكد من تحديد ارتفاع الهيدر */
+            top: 0;
+            width: 100%;
+            background-color:lightblue;
+            color: black;
+            z-index: 1000;
+            padding: 10px ;
             display: flex;
-            flex-direction: column;
-            height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
+             border: 2px solid black;
+             text-align: center;
+              font-size:25px;
+
         }
 
-        .top-bar {
+        .header-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background-color:lightblue;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            color: #333;
-            border: 2px solid black;
         }
 
-        .top-bar h1 {
-            margin-right: auto;
+        .header-content h1 {
+            margin: 0;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
         }
 
-         /* زر فتح القائمة في الجانب الأيسر */
+        .header-content span {
+            margin-right: 40px; /* مسافة بين النص وزر القائمة */
+            font-size: 30px; /* حجم الخط للنص */
+            
+        }
+
+        /* تنسيق الزر في الهيدر */
         .open-btn {
-            position: left;
-            left: 10px; /* وضع الزر في الجانب الأيسر */
             font-size: 25px;
             cursor: pointer;
             background-color: #111;
             color: red;
             border-bottom: 3px solid yellow;
             padding: 10px 15px;
-            border-radius: 5px;
+            border-radius: 5px; /* إضافة حواف دائرية للزر */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s, box-shadow 0.3s;
         }
 
-         /* القائمة الجانبية */
+        .open-btn:hover {
+            background-color:none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
         .sidebar {
             height: 100%;
             width: 0;
             position: fixed;
-            z-index: 1000;
+            z-index: 1001; /* أعلى من المحتوى */
             top: 0;
-            right: 0; /* جعل القائمة تظهر من الجانب الأيمن */
-            background-color: lightblue;
-            color: red;
+            left: 0; /* تظهر من اليسار */
+            background-color: lightblue; /* الخلفية الأساسية */
+            color: RED;
             overflow-x: hidden;
-            transition: width 0.5s;
+            transition: width 0.5s; /* الانتقال مع تغيير العرض */
             padding-top: 60px;
-            box-shadow: 5px 5px 10px #333, -2px -2px 10px #555;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* ظل لإعطاء تأثير 3D */
             border-radius: 10px;
+            box-shadow: 5px 5px 10px #333, -2px -2px 10px #555;
             line-height: 30px;
             text-align: right;
+
         }
 
         .sidebar a {
- background-color: yellow;
             padding: 10px 15px;
             text-decoration: none;
             font-size: 20px;
-            color: black;
+            color: black; /* لون النص الأساسي */
             display: block;
-            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-            border-radius: 10px;
-             border: 2px solid black;
-             margin-bottom: 5px;
-            
-           
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* انتقالات ناعمة لتأثيرات التمرير */
+            border-radius: 5px; /* زوايا دائرية للعناصر */
+
         }
 
         .sidebar a:hover {
-            background-color: black;
-            color: yellow;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+            background-color: black; /* تغيير الخلفية عند التمرير */
+            color: yellow; /* تغيير لون النص عند التمرير */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* إضافة ظل عند التمرير */
         }
 
         .sidebar .close-btn {
-            
             position: absolute;
-            background-color: black;
-            top: 5px;
-            left: 10px; /* جعل زر الإغلاق في الجانب الأيسر */
+            background-color: black; 
+            top: 10px;
+            right: 10px;
             font-size: 30px;
-            color: yellow;
+            color: yellow; /* لون النص الأساسي */
             cursor: pointer;
-             transition: color 0.3s, transform 0.3s; /* انتقالات ناعمة لتأثيرات التمرير */
+            transition: color 0.3s, transform 0.3s; /* انتقالات ناعمة لتأثيرات التمرير */
         }
-         .sidebar .close-btn:hover {
+
+        .sidebar .close-btn:hover {
             color: yellow; /* تغيير لون عند التمرير */
             transform: scale(1.1); /* تكبير قليلاً عند التمرير */
         }
-        /* الجزء الرئيسي */
-        .main-content {
-            flex: 1;
-            display: flex;
-            overflow-y: scroll;
+
+        #main-content {
+            padding: 9px;
+            margin-top: 15px; /* اضبط القيمة حسب الحاجة */
         }
 
-        /* قسم السيارات */
-        .car-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, maxnmax(100px, 1fr));
-            gap: 5px;
-            padding: 20px;
-          
-        }
+      .content {
+  background-color:#00ffff;
+  border-radius: 10px;
+  padding: 10px;
+border: 2px solid black;
+margin-top: 10px; /* اضبط القيمة حسب الحاجة */
+}
+.contente {
+  background-color:BLACK;
+  border-radius: 10px;
+  padding: 5px;
+border: 2px solid RED;
+font-size: 25px;
+ color:WHITE; /* لون النص الأساسي */
+ text-align: center;
+ width: 810px;
+  height:50px;
+}
 
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            border: 2px solid black;
-            max-width: 140px;  /* تعيين الحجم الأقصى للصور */
-            max-height: 140px; /* تعيين الحجم الأقصى للصور */
-        }
+.content tbody td {
+  background-color: #f0f0f0;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 15px;
+  transition: background-color 0.3s;
+border: 2px solid black;
+}
 
-        .card img {
-            width: 100%;
-            height: auto;
-            max-width: 120px;  /* تعيين الحجم الأقصى للصور */
-            max-height: 120px; /* تعيين الحجم الأقصى للصور */
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
+.content tbody td:hover {
+  background-color: #e0e0e0;
+}
 
-        .card span {
-            font-size: 1rem;
-            color: #333;
-        }
+.content tbody td a {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
 
-        .card:hover {
-            transform: scale(1.05);
-        }
+.content tbody td a:hover {
+  color: yellow;
+}
 
-        /* قسم الإعلانات */
-        .ads-section {
-            width: 300px;
-            height: 100%;
-            position: sticky;
-            top: 0;
-            background-color:black;
-            padding: 20px;
-            box-sizing: border-box;
-            border: 2px solid red;
-             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 13px;
-            padding: 10px;
-            width: calc(100% - 200px); /* خصص المساحة المتبقية للسيارات */
-             border-radius: 8px;
-        }
+.xstv {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  transition: transform 0.2s;
+}
 
-        .ads-section h2 {
-            color: red;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .ads-section img {
-            width: 100%;
-            height: auto;
-            max-width: 120px;  /* تعيين الحجم الأقصى للصور */
-            max-height: 120px; /* تعيين الحجم الأقصى للصور */
-            object-fit: contain;
-            margin-bottom: 8px;
-            border: 2px solid yellow;
-             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            
-        }
-        .ads-section :hover {
-            transform: scale(1.05);
-        }
+.xstv:hover {
+  transform: scale(1.05);
+}
 
+        .sidebar ul li {
+    color: yellow;
+    box-sizing: border-box;
+    border-bottom: 2px solid #00ffff;
+   
+    transition: .4s;
+}
 
-    </style>
+   </style>
 </head>
 <body>
 
-    <!-- الشريط العلوي -->
-    <div class="top-bar">
-        <span class="open-btn" onclick="openSidebar()">☰</span>
-        <h1>تعلم البرمجه</h1>
-    </div>
-
-    <!-- الشريط الجانبي -->
-    <div id="sidebar" class="sidebar">
-   
-
-          <a href="#" class="close-btn" onclick="closeSidebar()">×</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الرئيسية</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الملف الشخصي</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الإعدادات</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">سياسة الخصوصية</a>
-        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">معلومات حول التطبيق</a>
-    </div>
-
-    <!-- الجزء الرئيسي -->
-    <div class="main-content">
-        <!-- قسم السيارات -->
-
-        <div class="car-section">
-       
-<a href="TOYOTA.HTML"><center><img class="card" src="https://f.top4top.io/p_3081ur30h1.jpg" width="130px" height="130px"></center></a> 
-  <a href="KIA.HTML"><center><img class="card " src="https://f.top4top.io/p_308141rpm1.jpg" width="130px" height="130px"></center></a>  
-
-
-
-<a href="SOUPRA.HTML"><center><img class="card " src="https://g.top4top.io/p_3081nz8hp1.jpg" width="130px" height="130px"></center></a> 
-<a href="SATRON.HTML"><center><img class="card " src="https://a.top4top.io/p_3081sm3cw1.jpg" width="130px" height="130px"></center></a></td >
-
-
-</div>
-<div class="car-section">
-<a href="LEKZZ.HTML"><center><img class="card " src="https://a.top4top.io/p_3094zi8c81.jpg " width="130px" height="130px"></center></a></td >
-<a href="JEEP.HTML"><center><img class="card " src="https://a.top4top.io/p_30949rzoe1.jpg " width="130px" height="130px"></center></a></td >
-
-
-<a href="BMW.HTML"><center><img class="card " src="https://l.top4top.io/p_3113tsnnu1.jpg " width="130px" height="130px"></center></a>
-<a href="GMC.HTML"><center><img class="card " src="https://j.top4top.io/p_3094zerhd1.jpg " width="130px" height="130px"></center></a>
-
-</div>
-<div class="car-section">
-<a href="dihatso.HTML"><center><img class="card " src="https://g.top4top.io/p_3081ksmaz2.jpg" width="130px" height="130px"></center></a>
-<a href="hionda.HTML"><center><img class="card " src="https://f.top4top.io/p_30940zqed1.jpg " width="130px" height="130px"></center></a>
-
-
-<a href="MISTBOSHI.HTML"><center><img class="card " src="https://f.top4top.io/p_3094bfotl1.jpg " width="130px" height="130px"></center></a>
-<a href="HEOANDAI.HTML"><center> <img class="card " src="https://f.top4top.io/p_3081c6fde3.jpg" width="130px" height="130px"></center></a>
-
-</div>
-<div class="car-section">
-<a href="volvo.HTML"><center><img class="card " src="https://j.top4top.io/p_3081iwjrp3.jpg" width="130px" height="130px"></center></a>
-<a href="isuzu.HTML"> <center><img class="card " src=" https://g.top4top.io/p_3113fq8ge1.jpg " width="130px" height="130px"></center>
-
-
-<a href="NISSAN.HTML"><center><img class="card " src="https://f.top4top.io/p_3094gcizn1.jpg " width="130px" height="130px"></center></a>
-<a href="SOZOKI.HTML"><center><img class="card " src="https://f.top4top.io/p_3081vjkay1.jpg" width="130px" height="130px"></center></a></td >
-
-</div>
-<div class="car-section">
-
-<a href="DAEW.HTML"><center><img class="card " src="https://l.top4top.io/p_3094yxj6s1.jpg " width="130px" height="130px"></center></a></td >
-<a href="SHAVER.HTML"><center><img class="card " src="https://j.top4top.io/p_30812grcf1.jpg" width="130px" height="130px"></center></a></td >
-
-
-<a href="BUICK.HTML"><center><img class="card " src="https://f.top4top.io/p_3081ojcnb1.jpg" width="130px" height="130px"></center></a></td >
-<a href="Citroen.HTML"><center><img class="card " src="https://a.top4top.io/p_3081n79kw1.jpg" width="130px" height="130px"></center></a></td >
-
-</div>
-<div class="car-section">
-<a href="hmmar.HTML"><center><img class="card " src="https://j.top4top.io/p_30942w7ni1.jpg " width="130px" height="130px"></center></a>
-<a href="Jagoar.HTML"><center><img class="card " src="https://a.top4top.io/p_30943jby61.jpg " width="130px" height="130px"></center></a>
-
-
-
-<a href="Landrovr.HTML"><center><img class="card " src="https://j.top4top.io/p_3094tlz9i1.jpg " width="130px" height="130px"></center></a>
-<a href="fiat.HTML"><center><img class="card " src="https://g.top4top.io/p_30945nrxv1.jpg " width="130px" height="130px"></center></a>
-
-</div>
-<div class="car-section">
-<a href="AODI.HTML"><center><img class="card " src="https://l.top4top.io/p_3113estl11.jpg " width="130px" height="130px"></center></a>
-<a href="mini.HTML"><center><img class="card " src="https://a.top4top.io/p_3094dr2jd1.jpg " width="130px" height="130px"></center></a>
-
-
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3081a3sqd1.jpg" width="130px" height="130px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://j.top4top.io/p_30948k3ia1.jpg " width="130px" height="130px"></center></a>
-
-</div>
-<div class="car-section">
-<a href="Fraasha.html"><center><img class="card " src="https://g.top4top.io/p_3113pqrv61.jpg " width="130px" height="130px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3113vj7gi1.jpg " width="130px" height="130px"></center>
-
-
-<a href="Fraasha.html"><center><img class="card " src="https://a.top4top.io/p_3094mkvwy1.jpg " width="130px" height="130px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3094uncal1.jpg " width="130px" height="130px"></center></a>
-
-
-</div>
-<div class="car-section">
-<a href="Pontiac.HTML"><center><img class="card " src="https://f.top4top.io/p_31134v5iw1.jpg " width="130px" height="130px"></center></a>
-<a href="CADILLAC.HTML"> <center><img class="card " src=" https://j.top4top.io/p_311324uzz1.jpg " width="130px" height="130px"></center></a>
-
-
-
-<a href="scion.HTML"><center><img class="card " src="https://g.top4top.io/p_31136yo681.jpg " width="130px" height="130px"></center></a>
-<a href="EGLE.HTML"><center><img class="card " src="https://a.top4top.io/p_3113d37jg1.jpg " width="130px" height="130px"></center></a>
-
-
+    <header>
+        <div class="header-content">
+            <button class="open-btn" onclick="openSidebar()"><b>☰</b></button>
+            <span><b><marquee bgcolor="lightblue" 
+ width="700"  direction="right" ><CENTER>مرحبا بكم في موقع برمج ريموت سيارتك بيدك   /  تعلم كيف تقوم ببرمجه ريموت السياره بدون اي اجهزه</CENTER></marquee ></center></b></span>
         </div>
+    </header>
 
-        <!-- قسم الإعلانات -->
-       
+    <div id="sidebar" class="sidebar">
+<b><ul>
+       <a href="#" class="close-btn" onclick="closeSidebar()"> ×</a>
+       <li> <a href=" https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78  ">الرئيسية</a></li> 
+        <li> <a href="  https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78 ">الملف الشخصي</a></li> 
+        <li> <a href=" https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78 ">الإعدادات</a></li> 
+        <li> <a href=" https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78 ">سياسه الخصوصيه</a></li> 
+       <li>  <a href="  https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78 ">معلومات حول التطبيق</a></li> 
+</ul></b>
+        <!-- المزيد من العناصر -->
     </div>
+
+    <div class="contente" >
+<li> قم بأختيار شعار شركه السياره لعرض البيانات</li> 
+</div>
+
+<table class="content" width="90%" align="center" border="0" cellspacing="20">  
+<tbody>
+<tr>
+<td rowspan= "30" ><a href="scion.HTML"><center><img class="xstv" src="https://g.top4top.io/p_31136yo681.jpg " width="110px" height="110px"></center></a></td>
+<td >  <a href="TOYOTA.HTML"><center><img class="xstv" src="https://f.top4top.io/p_3081ur30h1.jpg" width="200px" height="200px"></center></a> </td>
+<td >  <a href="KIA.HTML"><center><img class="xstv" src="https://f.top4top.io/p_308141rpm1.jpg" width="110px" height="110px"></center></a>  </td>
+</TR>
+
+<tr>
+<td ><a href="SOUPRA.HTML"><center><img class="xstv" src="https://g.top4top.io/p_3081nz8hp1.jpg" width="110px" height="110px"></center></a> </td>
+<td ><a href="SATRON.HTML"><center><img class="xstv" src="https://a.top4top.io/p_3081sm3cw1.jpg" width="110px" height="110px"></center></a></td >
+</TR>
+
+<tr>
+<td ><a href="LEKZZ.HTML"><center><img class="xstv" src="https://a.top4top.io/p_3094zi8c81.jpg " width="110px" height="110px"></center></a></td >
+<td ><a href="JEEP.HTML"><center><img class="xstv" src="https://a.top4top.io/p_30949rzoe1.jpg " width="110px" height="110px"></center></a></td >
+</TR>
+<tr>
+<td><a href="BMW.HTML"><center><img class="xstv" src="https://l.top4top.io/p_3113tsnnu1.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="GMC.HTML"><center><img class="xstv" src="https://j.top4top.io/p_3094zerhd1.jpg " width="110px" height="110px"></center></a></td>
+</TR>
+<tr>
+<td><a href="dihatso.HTML"><center><img class="xstv" src="https://g.top4top.io/p_3081ksmaz2.jpg" width="110px" height="110px"></center></a></td>
+<td><a href="hionda.HTML"><center><img class="xstv" src="https://f.top4top.io/p_30940zqed1.jpg " width="110px" height="110px"></center></a></td>
+</TR>
+<tr>
+<td><a href="MISTBOSHI.HTML"><center><img class="xstv" src="https://f.top4top.io/p_3094bfotl1.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="HEOANDAI.HTML"><center> <img class="xstv" src="https://f.top4top.io/p_3081c6fde3.jpg" width="120px" height="120px"></center></a></td>
+</TR>
+<tr>
+<td><a href="volvo.HTML"><center><img class="xstv" src="https://j.top4top.io/p_3081iwjrp3.jpg" width="110px" height="110px"></center></a></td>
+<td><a href="isuzu.HTML"> <center><img class="xstv" src=" https://g.top4top.io/p_3113fq8ge1.jpg " width="120px" height="120px"></center></td>
+</TR>
+<tr>
+<td ><a href="NISSAN.HTML"><center><img class="xstv" src="https://f.top4top.io/p_3094gcizn1.jpg " width="110px" height="110px"></center></a></td>
+<td ><a href="SOZOKI.HTML"><center><img class="xstv" src="https://f.top4top.io/p_3081vjkay1.jpg" width="110px" height="110px"></center></a></td >
+</TR>
+<tr>
+
+<td ><a href="DAEW.HTML"><center><img class="xstv" src="https://l.top4top.io/p_3094yxj6s1.jpg " width="110px" height="110px"></center></a></td >
+<td ><a href="SHAVER.HTML"><center><img class="xstv" src="https://j.top4top.io/p_30812grcf1.jpg" width="110px" height="110px"></center></a></td >
+</TR>
+<tr>
+<td ><a href="BUICK.HTML"><center><img class="xstv" src="https://f.top4top.io/p_3081ojcnb1.jpg" width="110px" height="110px"></center></a></td >
+<td ><a href="Citroen.HTML"><center><img class="xstv" src="https://a.top4top.io/p_3081n79kw1.jpg" width="110px" height="110px"></center></a></td >
+</TR>
+<TR>
+<td><a href="hmmar.HTML"><center><img class="xstv" src="https://j.top4top.io/p_30942w7ni1.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="Jagoar.HTML"><center><img class="xstv" src="https://a.top4top.io/p_30943jby61.jpg " width="110px" height="110px"></center></a></td>
+</TR>
+
+<TR>
+<td><a href="Landrovr.HTML"><center><img class="xstv" src="https://j.top4top.io/p_3094tlz9i1.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="fiat.HTML"><center><img class="xstv" src="https://g.top4top.io/p_30945nrxv1.jpg " width="110px" height="110px"></center></a></td>
+</TR>
+<TR>
+<td><a href="AODI.HTML"><center><img class="xstv" src="https://l.top4top.io/p_3113estl11.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="mini.HTML"><center><img class="xstv" src="https://a.top4top.io/p_3094dr2jd1.jpg " width="110px" height="110px"></center></a></td>
+</TR>
+<TR>
+<td><a href="Fraasha.html"><center><img class="xstv" src="https://f.top4top.io/p_3081a3sqd1.jpg" width="110px" height="110px"></center></a></td>
+<td><a href="Fraasha.html"><center><img class="xstv" src="https://j.top4top.io/p_30948k3ia1.jpg " width="110px" height="110px"></center></a></td>
+</TR>
+<TR>
+<td><a href="Fraasha.html"><center><img class="xstv" src="https://g.top4top.io/p_3113pqrv61.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="Fraasha.html"><center><img class="xstv" src="https://f.top4top.io/p_3113vj7gi1.jpg " width="120px" height="120px"></center></td>
+</TR>
+<TR>
+<td><a href="Fraasha.html"><center><img class="xstv" src="https://a.top4top.io/p_3094mkvwy1.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="Fraasha.html"><center><img class="xstv" src="https://f.top4top.io/p_3094uncal1.jpg " width="110px" height="110px"></center></a></td>
+</tr>
+
+<TR>
+<td><a href="Pontiac.HTML"><center><img class="xstv" src="https://f.top4top.io/p_31134v5iw1.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="CADILLAC.HTML"> <center><img class="xstv" src=" https://j.top4top.io/p_311324uzz1.jpg " width="120px" height="120px"></center></a></td>
+
+</TR>
+<TR>
+<td><a href="scion.HTML"><center><img class="xstv" src="https://g.top4top.io/p_31136yo681.jpg " width="110px" height="110px"></center></a></td>
+<td><a href="EGLE.HTML"><center><img class="xstv" src="https://a.top4top.io/p_3113d37jg1.jpg " width="110px" height="110px"></center></a></td>
+
+</TR>
+
+  <!-- Repeat the same structure for other rows as needed -->
+</tbody>
+</table>
 
     <script>
         function openSidebar() {
@@ -320,7 +320,31 @@
         function closeSidebar() {
             document.getElementById("sidebar").style.width = "0";
         }
-    </script>
 
+        // متغيرات لتتبع السحب
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // الكشف عن بدء السحب
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        // الكشف عن إنهاء السحب
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        // التعامل مع السحب
+        function handleSwipe() {
+            if (touchEndX < touchStartX && touchStartX - touchEndX > 100) {
+                openSidebar();  // إذا سحب المستخدم من اليمين إلى اليسار، نفتح القائمة
+            }
+            if (touchEndX > touchStartX && touchEndX - touchStartX > 100) {
+                closeSidebar();  // إذا سحب المستخدم من اليسار إلى اليمين، نغلق القائمة
+            }
+        }
+    </script>
 </body>
 </html>
