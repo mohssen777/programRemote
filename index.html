@@ -23,7 +23,7 @@
         header {
            
             position: fixed;
-            height: 120px;
+            height: 100px;
             top: 0;
             width: 100%;
             background-color: lightblue;
@@ -38,41 +38,89 @@
             border-radius: 8px;
             border: 2px solid black;
             text-align: center;
-            font-size: 10px;
+            font-size: 25px;
+        }
+       .top-header h1 {
+            margin-right: auto;
         }
 
-        /* الشريط الجانبي */
+
+         /* زر فتح القائمة في الجانب الأيسر */
+        .open-btn {
+            position: left;
+            left: 10px; /* وضع الزر في الجانب الأيسر */
+            font-size: 25px;
+            cursor: pointer;
+            background-color: #111;
+            color: red;
+            border-bottom: 3px solid yellow;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+         /* القائمة الجانبية */
         .sidebar {
-            display: flex;
-            justify-content: RIGHT;
-            align-items:CENTER;
-            width: 100%;           
-            color: #fff;
-            padding: 2px;
-            position: static;
-           font-size: 10px;
-             margin-top: 30px; /* لضمان أن قسم الشعارات يبدأ أسفل الهيدر */
-           
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0; /* جعل القائمة تظهر من الجانب الأيمن */
+            background-color: lightblue;
+            color: red;
+            overflow-x: hidden;
+            transition: width 0.5s;
+            padding-top: 60px;
+            box-shadow: 5px 5px 10px #333, -2px -2px 10px #555;
+            border-radius: 10px;
+            line-height: 30px;
+            text-align: right;
         }
 
         .sidebar a {
-            display: inline-block;
-            background-color: #000;
-            color: yellow;
-            padding: 7px 10px;
-            margin: 0;
+ background-color: yellow;
+            padding: 10px 15px;
             text-decoration: none;
-            font-size: 15px;
-            text-align: center;
-            border-radius: 0px;
-            transition: background-color 0.3s;
+            font-size: 20px;
+            color: black;
+            display: block;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+             border: 2px solid black;
+             margin-bottom: 5px;
+            
+           
         }
 
         .sidebar a:hover {
-            background-color: yellow;
-            color: #000;
+            background-color: black;
+            color: yellow;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
 
+        .sidebar .close-btn {
+            
+            position: absolute;
+            background-color: black;
+            top: 5px;
+            left: 10px; /* جعل زر الإغلاق في الجانب الأيسر */
+            font-size: 30px;
+            color: yellow;
+            cursor: pointer;
+             transition: color 0.3s, transform 0.3s; /* انتقالات ناعمة لتأثيرات التمرير */
+        }
+         .sidebar .close-btn:hover {
+            color: yellow; /* تغيير لون عند التمرير */
+            transform: scale(1.1); /* تكبير قليلاً عند التمرير */
+        }
+        /* الجزء الرئيسي */
+        .main-content {
+            flex: 1;
+            display: flex;
+            overflow-y: scroll;
+        }
         /* قسم الشعارات */
         .logo-section {
             padding: 20px;
@@ -80,7 +128,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-top: 130px; /* لضمان أن قسم الشعارات يبدأ أسفل الهيدر */
+            margin-top: 110px; /* لضمان أن قسم الشعارات يبدأ أسفل الهيدر */
         }
 
         .logo-section h1 {
@@ -130,15 +178,15 @@
                 justify-content: space-around;
                 width: 100%;
                 padding: 10px 0;
-               
+                margin-top: 80px; /* المسافة بين الهيدر والقائمة */
             }
 
             .logo-section {
-                margin-top: 150px; /* زيادة المسافة بين الهيدر والقسم الخاص بالشعارات */
+                margin-top: 140px; /* زيادة المسافة بين الهيدر والقسم الخاص بالشعارات */
             }
 
             header {
-                font-size: 10px;
+                font-size: 18px;
             }
 
             .sidebar a {
@@ -156,28 +204,34 @@
             .logo-grid {
                 margin-top: 50px;
             }
-        
+        }
     </style>
 </head>
 <body>
 
     <header>
- 
- <!-- الشريط الجانبي -->
-    <div class="sidebar">
-        <a href="#">الرئيسية</a>
-        <a href="#">الملف الشخصي</a>
-        <a href="#">الإعدادات</a>
-        <a href="#">سياسة الخصوصية</a>
-        <a href="#">حول التطبيق</a>
+ <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <span class="open-btn" onclick="openSidebar()">☰</span>
+        
+    </div>
+
+    <!-- الشريط الجانبي -->
+    <div id="sidebar" class="sidebar">
+   
+
+          <a href="#" class="close-btn" onclick="closeSidebar()">×</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الرئيسية</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الملف الشخصي</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الإعدادات</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">سياسة الخصوصية</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">معلومات حول التطبيق</a>
     </div>
 </header>
 
-   
-
     <!-- قسم الشعارات -->
     <div class="logo-section">
-        <h1>قم بأختيار شعار السياره لتضهر لك البيانات</h1>
+        <h1>الشعارات</h1>
         <div class="logo-grid">
             <a href="TOYOTA.HTML" class="logo-card">
                 <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
@@ -219,6 +273,15 @@
             <!-- أضف المزيد من الشعارات هنا -->
         </div>
     </div>
+<script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
 
 </body>
 </html>
