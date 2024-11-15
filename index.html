@@ -13,7 +13,6 @@
 
         body {
             display: flex;
-            flex-wrap: wrap;
             height: 100vh;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -124,7 +123,8 @@
             object-fit: contain;
         }
 
-        /* استعلامات الوسائط (media queries) لتحسين العرض على الشاشات الصغيرة والكبيرة */
+        /* استعلامات الوسائط (Media Queries) */
+        /* على الشاشات الصغيرة (أقل من 768px) */
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -140,17 +140,11 @@
             .logo-section {
                 margin-left: 0;
                 width: 100%;
-                margin-top: 100px; /* مسافة الهيدر */
+                margin-top: 100px; /* المسافة بين الهيدر وقسم الشعارات */
             }
 
             .logo-grid {
                 margin-top: 20px;
-            }
-
-            .header-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
             }
 
             header {
@@ -163,10 +157,10 @@
             }
         }
 
-        /* عرض على الشاشات الكبيرة */
+        /* على الشاشات الكبيرة (أكبر من 1024px) */
         @media (min-width: 1024px) {
             .logo-grid {
-                margin-top: 50px; /* لضبط المسافة بين الشعارات والهيدر */
+                margin-top: 50px;
             }
         }
     </style>
