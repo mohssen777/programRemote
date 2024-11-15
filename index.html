@@ -13,12 +13,34 @@
 
         body {
             display: flex;
+            flex-wrap: wrap;
             height: 100vh;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
         }
 
-        /* تقسيم الصفحة لنصفين */
+        /* الهيدر */
+        header {
+            position: fixed;
+            height: 80px;
+            top: 0;
+            width: 100%;
+            background-color: lightblue;
+            color: black;
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 2px solid black;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        /* الشريط الجانبي */
         .sidebar {
             width: 30%;
             background-color: #333;
@@ -28,6 +50,10 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            height: 100vh; /* تأكد من أن الشريط الجانبي يملأ الصفحة */
+            position: fixed;
+            top: 80px;
+            left: 0;
         }
 
         .sidebar h2 {
@@ -53,13 +79,15 @@
             color: #000;
         }
 
+        /* قسم الشعارات */
         .logo-section {
+            margin-left: 30%;
             width: 70%;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
         }
 
         .logo-section h1 {
@@ -73,7 +101,7 @@
             gap: 15px;
             justify-items: center;
             width: 100%;
-            margin-top: 220px ;
+            margin-top: 220px;
         }
 
         .logo-card {
@@ -95,39 +123,64 @@
             height: 90px;
             object-fit: contain;
         }
- 
- header {
-            position: fixed;
-            height: 80px; /* تأكد من تحديد ارتفاع الهيدر */
-            top: 0;
-            width: 100%;
-            background-color:lightblue;
-            color: black;
-            z-index: 1000;
-            padding: 10px ;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
-            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-            border-radius: 8px; /* زاوية منحنية لجعلها تبدو أكثر نعومة */
-             border: 2px solid black;
-             text-align: center;
-              font-size:25px;
 
+        /* استعلامات الوسائط (media queries) لتحسين العرض على الشاشات الصغيرة والكبيرة */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 10px;
+            }
+
+            .logo-section {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 100px; /* مسافة الهيدر */
+            }
+
+            .logo-grid {
+                margin-top: 20px;
+            }
+
+            .header-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header {
+                font-size: 18px;
+            }
+
+            .sidebar a {
+                font-size: 16px;
+                width: 90%;
+            }
+        }
+
+        /* عرض على الشاشات الكبيرة */
+        @media (min-width: 1024px) {
+            .logo-grid {
+                margin-top: 50px; /* لضبط المسافة بين الشعارات والهيدر */
+            }
         }
     </style>
 </head>
 <body>
-<header>
+
+    <header>
         <div class="header-content">
             <button class="open-btn" onclick="openSidebar()"><b>☰</b></button>
-            <span><b><marquee bgcolor="lightblue" 
- width="700"  direction="right" ><CENTER>مرحبا بكم في موقع برمج ريموت سيارتك بيدك   /  تعلم كيف تقوم ببرمجه ريموت السياره بدون اي اجهزه</CENTER></marquee ></center></b></span>
+            <span><b><marquee bgcolor="lightblue" width="700" direction="right"><CENTER>مرحبا بكم في موقع برمج ريموت سيارتك بيدك   /  تعلم كيف تقوم ببرمجه ريموت السياره بدون اي اجهزه</CENTER></marquee></CENTER></b></span>
         </div>
     </header>
 
-    <!-- النصف الأيسر: الشريط الجانبي -->
+    <!-- الشريط الجانبي -->
     <div class="sidebar">
         <h2>القائمة الجانبية</h2>
         <a href="#">الرئيسية</a>
@@ -137,59 +190,11 @@
         <a href="#">حول التطبيق</a>
     </div>
 
-    <!-- النصف الأيمن: قسم الشعارات -->
+    <!-- قسم الشعارات -->
     <div class="logo-section">
         <h1>الشعارات</h1>
         <div class="logo-grid">
             <a href="TOYOTA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
-            </a>
-            <a href="KIA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_308141rpm1.jpg" alt="Kia">
-            </a>
-            <a href="SOUPRA.HTML" class="logo-card">
-                <img src="https://g.top4top.io/p_3081nz8hp1.jpg" alt="Soupra">
-            </a>
-            <a href="SATRON.HTML" class="logo-card">
-                <img src="https://a.top4top.io/p_3081sm3cw1.jpg" alt="Satron">
-            </a>
- <a href="TOYOTA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
-            </a>
-            <a href="KIA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_308141rpm1.jpg" alt="Kia">
-            </a>
-            <a href="SOUPRA.HTML" class="logo-card">
-                <img src="https://g.top4top.io/p_3081nz8hp1.jpg" alt="Soupra">
-            </a>
-            <a href="SATRON.HTML" class="logo-card">
-                <img src="https://a.top4top.io/p_3081sm3cw1.jpg" alt="Satron">
-            </a>
- <a href="TOYOTA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
-            </a>
-            <a href="KIA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_308141rpm1.jpg" alt="Kia">
-            </a>
-            <a href="SOUPRA.HTML" class="logo-card">
-                <img src="https://g.top4top.io/p_3081nz8hp1.jpg" alt="Soupra">
-            </a>
-            <a href="SATRON.HTML" class="logo-card">
-                <img src="https://a.top4top.io/p_3081sm3cw1.jpg" alt="Satron">
-            </a>
- <a href="TOYOTA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
-            </a>
-            <a href="KIA.HTML" class="logo-card">
-                <img src="https://f.top4top.io/p_308141rpm1.jpg" alt="Kia">
-            </a>
-            <a href="SOUPRA.HTML" class="logo-card">
-                <img src="https://g.top4top.io/p_3081nz8hp1.jpg" alt="Soupra">
-            </a>
-            <a href="SATRON.HTML" class="logo-card">
-                <img src="https://a.top4top.io/p_3081sm3cw1.jpg" alt="Satron">
-            </a>
- <a href="TOYOTA.HTML" class="logo-card">
                 <img src="https://f.top4top.io/p_3081ur30h1.jpg" alt="Toyota">
             </a>
             <a href="KIA.HTML" class="logo-card">
