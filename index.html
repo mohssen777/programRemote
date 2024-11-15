@@ -14,101 +14,110 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #00ffff;
-           
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
-        /* Top Bar */
         .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #00Ffff;
+            background-color:lightblue;
             padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             font-size: 1.2rem;
             color: #333;
             border: 2px solid black;
         }
 
-        .top-bar .icons {
-            display: flex;
-            gap: 15px;
+        .top-bar h1 {
+            margin-right: auto;
         }
 
-        .top-bar .icons img {
-            width: 20px;
-            height: 20px;
+         /* زر فتح القائمة في الجانب الأيسر */
+        .open-btn {
+            position: left;
+            left: 10px; /* وضع الزر في الجانب الأيسر */
+            font-size: 25px;
+            cursor: pointer;
+            background-color: #111;
+            color: red;
+            border-bottom: 3px solid yellow;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
-        /* Image Slider */
-        .slider {
-            position: relative;
-            width: 100%;
-            height: 90px;
-            overflow: hidden;
-            margin: 10px 0;
+         /* القائمة الجانبية */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0; /* جعل القائمة تظهر من الجانب الأيمن */
+            background-color: lightblue;
+            color: red;
+            overflow-x: hidden;
+            transition: width 0.5s;
+            padding-top: 60px;
+            box-shadow: 5px 5px 10px #333, -2px -2px 10px #555;
+            border-radius: 10px;
+            line-height: 30px;
+            text-align: right;
+        }
+
+        .sidebar a {
+ background-color: yellow;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+            display: block;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+             border: 2px solid black;
+             margin-bottom: 5px;
+            
            
         }
 
-        .slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: slide 10s infinite;
-            border: 2px solid black;
+        .sidebar a:hover {
+            background-color: black;
+            color: yellow;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            33% { transform: translateX(-100%); }
-            66% { transform: translateX(-200%); }
-            100% { transform: translateX(0); }
+        .sidebar .close-btn {
+            
+            position: absolute;
+            background-color: black;
+            top: 5px;
+            left: 10px; /* جعل زر الإغلاق في الجانب الأيسر */
+            font-size: 30px;
+            color: yellow;
+            cursor: pointer;
+             transition: color 0.3s, transform 0.3s; /* انتقالات ناعمة لتأثيرات التمرير */
         }
-
-        /* Search Box */
-        .search-box {
-            margin: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 20px;
+         .sidebar .close-btn:hover {
+            color: yellow; /* تغيير لون عند التمرير */
+            transform: scale(1.1); /* تكبير قليلاً عند التمرير */
+        }
+        /* الجزء الرئيسي */
+        .main-content {
+            flex: 1;
             display: flex;
-            align-items: center;
-            border: 2px solid black;
+            overflow-y: scroll;
         }
 
-        .search-box input {
-            width: 100%;
-            border: none;
-            outline: none;
-            padding: 10px;
-            background: transparent;
-            font-size: 1rem;
-        }
-
-        /* Existing Car Cards Styles */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .sub-header {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        .grid {
+        /* قسم السيارات */
+        .car-section {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            padding: 30px;
+            width: calc(100% - 300px); /* خصص المساحة المتبقية للسيارات */
         }
 
         .card {
@@ -121,139 +130,189 @@
             text-decoration: none;
             color: inherit;
             border: 2px solid black;
-             
+            max-width: 140px;  /* تعيين الحجم الأقصى للصور */
+            max-height: 140px; /* تعيين الحجم الأقصى للصور */
         }
 
         .card img {
-            width: 60px;
-            height: 60px;
+            width: 100%;
+            height: auto;
+            max-width: 120px;  /* تعيين الحجم الأقصى للصور */
+            max-height: 120px; /* تعيين الحجم الأقصى للصور */
             object-fit: contain;
             margin-bottom: 8px;
         }
-        
+
         .card span {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #333;
         }
 
         .card:hover {
             transform: scale(1.05);
         }
+
+        /* قسم الإعلانات */
+        .ads-section {
+            width: 300px;
+            height: 100%;
+            position: sticky;
+            top: 0;
+            background-color:black;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 2px solid red;
+             display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 13px;
+            padding: 10px;
+            width: calc(50% - 200px); /* خصص المساحة المتبقية للسيارات */
+             border-radius: 8px;
+        }
+
+        .ads-section h2 {
+            color: red;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .ads-section img {
+            width: 100%;
+            height: auto;
+            max-width: 120px;  /* تعيين الحجم الأقصى للصور */
+            max-height: 120px; /* تعيين الحجم الأقصى للصور */
+            object-fit: contain;
+            margin-bottom: 8px;
+            border: 2px solid yellow;
+             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            
+        }
+        .ads-section :hover {
+            transform: scale(1.05);
+        }
+
+
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- الشريط العلوي -->
     <div class="top-bar">
-        <div class="icons">
-            <img src="https://example.com/icons/notification.png" alt="Notification">
-            <img src="https://example.com/icons/search.png" alt="Search">
-        </div>
+        <span class="open-btn" onclick="openSidebar()">☰</span>
         <h1>تعلم البرمجه</h1>
-        <img src="https://example.com/icons/menu.png" alt="Menu">
     </div>
 
-    <!-- Image Slider -->
-    <div class="slider">
-        <img src="https://example.com/ads/ad1.jpg" alt="Ad 1">
-        <img src="https://example.com/ads/ad2.jpg" alt="Ad 2">
-        <img src="https://example.com/ads/ad3.jpg" alt="Ad 3">
+    <!-- الشريط الجانبي -->
+    <div id="sidebar" class="sidebar">
+   
+
+          <a href="#" class="close-btn" onclick="closeSidebar()">×</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الرئيسية</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الملف الشخصي</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الإعدادات</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">سياسة الخصوصية</a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">معلومات حول التطبيق</a>
     </div>
 
-    <!-- Search Box -->
-    <div class="search-box">
-        <input type="text" placeholder="ابحث في كل الاقسام">
-    </div>
+    <!-- الجزء الرئيسي -->
+    <div class="main-content">
+        <!-- قسم السيارات -->
 
-    <!-- Car Categories -->
-      <div class="container">
-        
-        <div class="grid">
-            <!-- Car brand cards with links -->
-            
-                <a href="TOYOTA.HTML"><center><img class="card" src="https://f.top4top.io/p_3081ur30h1.jpg" width="110px" height="110px"></center></a> 
-  <a href="KIA.HTML"><center><img class="card " src="https://f.top4top.io/p_308141rpm1.jpg" width="110px" height="110px"></center></a>  
+        <div class="car-section">
+       
+<a href="TOYOTA.HTML"><center><img class="card" src="https://f.top4top.io/p_3081ur30h1.jpg" width="130px" height="130px"></center></a> 
+  <a href="KIA.HTML"><center><img class="card " src="https://f.top4top.io/p_308141rpm1.jpg" width="130px" height="130px"></center></a>  
 
 
 
-<a href="SOUPRA.HTML"><center><img class="card " src="https://g.top4top.io/p_3081nz8hp1.jpg" width="110px" height="110px"></center></a> 
-<a href="SATRON.HTML"><center><img class="card " src="https://a.top4top.io/p_3081sm3cw1.jpg" width="110px" height="110px"></center></a></td >
+<a href="SOUPRA.HTML"><center><img class="card " src="https://g.top4top.io/p_3081nz8hp1.jpg" width="130px" height="130px"></center></a> 
+<a href="SATRON.HTML"><center><img class="card " src="https://a.top4top.io/p_3081sm3cw1.jpg" width="130px" height="130px"></center></a></td >
 
 
 
-<a href="LEKZZ.HTML"><center><img class="card " src="https://a.top4top.io/p_3094zi8c81.jpg " width="110px" height="110px"></center></a></td >
-<a href="JEEP.HTML"><center><img class="card " src="https://a.top4top.io/p_30949rzoe1.jpg " width="110px" height="110px"></center></a></td >
+<a href="LEKZZ.HTML"><center><img class="card " src="https://a.top4top.io/p_3094zi8c81.jpg " width="130px" height="130px"></center></a></td >
+<a href="JEEP.HTML"><center><img class="card " src="https://a.top4top.io/p_30949rzoe1.jpg " width="130px" height="130px"></center></a></td >
 
 
-<a href="BMW.HTML"><center><img class="card " src="https://l.top4top.io/p_3113tsnnu1.jpg " width="110px" height="110px"></center></a>
-<a href="GMC.HTML"><center><img class="card " src="https://j.top4top.io/p_3094zerhd1.jpg " width="110px" height="110px"></center></a>
+<a href="BMW.HTML"><center><img class="card " src="https://l.top4top.io/p_3113tsnnu1.jpg " width="130px" height="130px"></center></a>
+<a href="GMC.HTML"><center><img class="card " src="https://j.top4top.io/p_3094zerhd1.jpg " width="130px" height="130px"></center></a>
 
 
-<a href="dihatso.HTML"><center><img class="card " src="https://g.top4top.io/p_3081ksmaz2.jpg" width="110px" height="110px"></center></a>
-<a href="hionda.HTML"><center><img class="card " src="https://f.top4top.io/p_30940zqed1.jpg " width="110px" height="110px"></center></a>
+<a href="dihatso.HTML"><center><img class="card " src="https://g.top4top.io/p_3081ksmaz2.jpg" width="130px" height="130px"></center></a>
+<a href="hionda.HTML"><center><img class="card " src="https://f.top4top.io/p_30940zqed1.jpg " width="130px" height="130px"></center></a>
 
 
-<a href="MISTBOSHI.HTML"><center><img class="card " src="https://f.top4top.io/p_3094bfotl1.jpg " width="110px" height="110px"></center></a>
-<a href="HEOANDAI.HTML"><center> <img class="card " src="https://f.top4top.io/p_3081c6fde3.jpg" width="110px" height="110px"></center></a>
+<a href="MISTBOSHI.HTML"><center><img class="card " src="https://f.top4top.io/p_3094bfotl1.jpg " width="130px" height="130px"></center></a>
+<a href="HEOANDAI.HTML"><center> <img class="card " src="https://f.top4top.io/p_3081c6fde3.jpg" width="130px" height="130px"></center></a>
 
 
-<a href="volvo.HTML"><center><img class="card " src="https://j.top4top.io/p_3081iwjrp3.jpg" width="110px" height="110px"></center></a>
-<a href="isuzu.HTML"> <center><img class="card " src=" https://g.top4top.io/p_3113fq8ge1.jpg " width="110px" height="110px"></center>
+<a href="volvo.HTML"><center><img class="card " src="https://j.top4top.io/p_3081iwjrp3.jpg" width="130px" height="130px"></center></a>
+<a href="isuzu.HTML"> <center><img class="card " src=" https://g.top4top.io/p_3113fq8ge1.jpg " width="130px" height="130px"></center>
 
 
-<a href="NISSAN.HTML"><center><img class="card " src="https://f.top4top.io/p_3094gcizn1.jpg " width="110px" height="110px"></center></a>
-<a href="SOZOKI.HTML"><center><img class="card " src="https://f.top4top.io/p_3081vjkay1.jpg" width="110px" height="110px"></center></a></td >
-
-
-
-<a href="DAEW.HTML"><center><img class="card " src="https://l.top4top.io/p_3094yxj6s1.jpg " width="110px" height="110px"></center></a></td >
-<a href="SHAVER.HTML"><center><img class="card " src="https://j.top4top.io/p_30812grcf1.jpg" width="110px" height="110px"></center></a></td >
-
-
-<a href="BUICK.HTML"><center><img class="card " src="https://f.top4top.io/p_3081ojcnb1.jpg" width="110px" height="110px"></center></a></td >
-<a href="Citroen.HTML"><center><img class="card " src="https://a.top4top.io/p_3081n79kw1.jpg" width="110px" height="110px"></center></a></td >
-
-
-<a href="hmmar.HTML"><center><img class="card " src="https://j.top4top.io/p_30942w7ni1.jpg " width="110px" height="110px"></center></a>
-<a href="Jagoar.HTML"><center><img class="card " src="https://a.top4top.io/p_30943jby61.jpg " width="110px" height="110px"></center></a>
+<a href="NISSAN.HTML"><center><img class="card " src="https://f.top4top.io/p_3094gcizn1.jpg " width="130px" height="130px"></center></a>
+<a href="SOZOKI.HTML"><center><img class="card " src="https://f.top4top.io/p_3081vjkay1.jpg" width="130px" height="130px"></center></a></td >
 
 
 
-<a href="Landrovr.HTML"><center><img class="card " src="https://j.top4top.io/p_3094tlz9i1.jpg " width="110px" height="110px"></center></a>
-<a href="fiat.HTML"><center><img class="card " src="https://g.top4top.io/p_30945nrxv1.jpg " width="110px" height="110px"></center></a>
+<a href="DAEW.HTML"><center><img class="card " src="https://l.top4top.io/p_3094yxj6s1.jpg " width="130px" height="130px"></center></a></td >
+<a href="SHAVER.HTML"><center><img class="card " src="https://j.top4top.io/p_30812grcf1.jpg" width="130px" height="130px"></center></a></td >
 
 
-<a href="AODI.HTML"><center><img class="card " src="https://l.top4top.io/p_3113estl11.jpg " width="110px" height="110px"></center></a>
-<a href="mini.HTML"><center><img class="card " src="https://a.top4top.io/p_3094dr2jd1.jpg " width="110px" height="110px"></center></a>
+<a href="BUICK.HTML"><center><img class="card " src="https://f.top4top.io/p_3081ojcnb1.jpg" width="130px" height="130px"></center></a></td >
+<a href="Citroen.HTML"><center><img class="card " src="https://a.top4top.io/p_3081n79kw1.jpg" width="130px" height="130px"></center></a></td >
 
 
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3081a3sqd1.jpg" width="110px" height="110px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://j.top4top.io/p_30948k3ia1.jpg " width="110px" height="110px"></center></a>
-
-
-<a href="Fraasha.html"><center><img class="card " src="https://g.top4top.io/p_3113pqrv61.jpg " width="110px" height="110px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3113vj7gi1.jpg " width="110px" height="110px"></center>
-
-
-<a href="Fraasha.html"><center><img class="card " src="https://a.top4top.io/p_3094mkvwy1.jpg " width="110px" height="110px"></center></a>
-<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3094uncal1.jpg " width="110px" height="110px"></center></a>
+<a href="hmmar.HTML"><center><img class="card " src="https://j.top4top.io/p_30942w7ni1.jpg " width="130px" height="130px"></center></a>
+<a href="Jagoar.HTML"><center><img class="card " src="https://a.top4top.io/p_30943jby61.jpg " width="130px" height="130px"></center></a>
 
 
 
-<a href="Pontiac.HTML"><center><img class="card " src="https://f.top4top.io/p_31134v5iw1.jpg " width="110px" height="110px"></center></a>
-<a href="CADILLAC.HTML"> <center><img class="card " src=" https://j.top4top.io/p_311324uzz1.jpg " width="110px" height="110px"></center></a>
+<a href="Landrovr.HTML"><center><img class="card " src="https://j.top4top.io/p_3094tlz9i1.jpg " width="130px" height="130px"></center></a>
+<a href="fiat.HTML"><center><img class="card " src="https://g.top4top.io/p_30945nrxv1.jpg " width="130px" height="130px"></center></a>
+
+
+<a href="AODI.HTML"><center><img class="card " src="https://l.top4top.io/p_3113estl11.jpg " width="130px" height="130px"></center></a>
+<a href="mini.HTML"><center><img class="card " src="https://a.top4top.io/p_3094dr2jd1.jpg " width="130px" height="130px"></center></a>
+
+
+<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3081a3sqd1.jpg" width="130px" height="130px"></center></a>
+<a href="Fraasha.html"><center><img class="card " src="https://j.top4top.io/p_30948k3ia1.jpg " width="130px" height="130px"></center></a>
+
+
+<a href="Fraasha.html"><center><img class="card " src="https://g.top4top.io/p_3113pqrv61.jpg " width="130px" height="130px"></center></a>
+<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3113vj7gi1.jpg " width="130px" height="130px"></center>
+
+
+<a href="Fraasha.html"><center><img class="card " src="https://a.top4top.io/p_3094mkvwy1.jpg " width="130px" height="130px"></center></a>
+<a href="Fraasha.html"><center><img class="card " src="https://f.top4top.io/p_3094uncal1.jpg " width="130px" height="130px"></center></a>
 
 
 
-<a href="scion.HTML"><center><img class="card " src="https://g.top4top.io/p_31136yo681.jpg " width="110px" height="110px"></center></a>
-<a href="EGLE.HTML"><center><img class="card " src="https://a.top4top.io/p_3113d37jg1.jpg " width="110px" height="110px"></center></a>
+<a href="Pontiac.HTML"><center><img class="card " src="https://f.top4top.io/p_31134v5iw1.jpg " width="130px" height="130px"></center></a>
+<a href="CADILLAC.HTML"> <center><img class="card " src=" https://j.top4top.io/p_311324uzz1.jpg " width="130px" height="130px"></center></a>
 
 
 
-            </a>
-            <!-- Add more cards as needed with links -->
+<a href="scion.HTML"><center><img class="card " src="https://g.top4top.io/p_31136yo681.jpg " width="130px" height="130px"></center></a>
+<a href="EGLE.HTML"><center><img class="card " src="https://a.top4top.io/p_3113d37jg1.jpg " width="130px" height="130px"></center></a>
+
+
         </div>
+
+        <!-- قسم الإعلانات -->
+       
     </div>
+
+    <script>
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
 
 </body>
 </html>
