@@ -14,7 +14,8 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #00ffff;
+            background-color: #f0f0f0;
+            margin-TOP: 130px;
            
         }
   @keyframes slide {
@@ -80,23 +81,7 @@
             transform: scale(1.05);
         }
 
-        /* Top Bar */
-        .top-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #00ffff;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            color: #333;
-            border: 2px solid black; 
-             margin-right: auto;
-        }
-
-        .top-bar h1 {
-            margin-right: auto; /* لنقل العنوان إلى الجانب الآخر */
-        }
-
+        
         /* زر فتح القائمة في الجانب الأيسر */
         .open-btn {
             position: left;
@@ -132,7 +117,7 @@
         }
 
         .sidebar a {
- background-color: yellow;
+            background-color: yellow;
             padding: 10px 15px;
             text-decoration: none;
             font-size: 20px;
@@ -152,8 +137,7 @@
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .sidebar .close-btn {
-            
+        .sidebar .close-btn {        
             position: absolute;
             background-color: black;
             top: 5px;
@@ -171,8 +155,8 @@
   /* Image Slider */
         .slider {
             position: relative;
-            width: 100%;
-            height: 200px;
+            width: 50%;
+            height: 150px;
             overflow: hidden;
             margin: 10px 0;
              border: 2px solid black;
@@ -246,15 +230,44 @@
             font-size: 0.9rem;
             color: #333;
         }
+
+ /* الهيدر */
+        header {
+           
+            position: fixed;
+            height: 100px;
+            top: 0;
+            width: 100%;
+            background-color: lightblue;
+            color: black;
+            z-index: 1000;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 2px solid black;
+            text-align: center;
+            font-size: 25px;
+        }
+       .top-header h1 {
+            margin-right: auto;
+        }
+
     </style>
 </head>
-<body>
-
-    <!-- Top Bar -->
-    <div class="top-bar">
+<header>
+    
         <span class="open-btn" onclick="openSidebar()">☰</span> <!-- زر فتح القائمة -->
         <h1>تعلم البرمجه</h1>
-    </div>
+
+           
+            <span><b><marquee bgcolor="lightblue" 
+ width="700"  direction="right" ><CENTER>مرحبا بكم في موقع برمج ريموت سيارتك بيدك   /  تعلم كيف تقوم ببرمجه ريموت السياره بدون اي اجهزه</CENTER></marquee ></center></b></span>
+        </div>
+   
 
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
@@ -266,15 +279,15 @@
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">معلومات حول التطبيق</a>
     </div>
  <!-- Image Slider -->
-    <div class="slider">
-        <img src="https://f.top4top.io/p_3081vjkay1.jpg" alt="ضع اعلانك هنا">
-        <img src="https://f.top4top.io/p_3081vjkay1.jpg" alt="ضع اعلانك هنا">
-    </div>
-
    
-    <!-- Car Categories -->
-      <div class="container">
-        
+</header>
+<body>
+ <div class="slider">
+        <img src="https://f.top4top.io/p_3081vjkay1.jpg" alt="ضع اعلانك هنا">
+       
+    </div>   
+    <div class="container">
+         <h1>اضغط على اي شعار لتضهر لك المعلومــــــــــــــات</h1>
         <div class="grid">
             <!-- Car brand cards with links -->
             
