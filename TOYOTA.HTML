@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <style>
         body {
-            direction: rtl;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 110px;
-            background-color: lightblue;
-            display: flex;
-            justify-content:center;
            
+            font-family: Arial, sans-serif;
+            margin-top: 150px;           
+            background: #f0f0f0;
+            display: flex;
+            align-items: flex-start;            
+             direction: rtl;                   
+
         }
 
-        .container {
+
+         .container {
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
@@ -26,15 +27,17 @@
         }
 
         select {
-            height: 55px;
-            width: 450px;
-            font-size: 24px;
+            height: 70px;
+            width: 470px;
+            font-size: 30px;
             padding: 10px;
             border-radius: 15px;
             box-shadow: 0 10px 1px rgba(0, 0, 0, 0.2);
             color: BLACK;
             background-color: YELLOW;
-            border: 2px solid BLACK;
+            border: 3px solid BLACK;
+            text-align: right; /* محاذاة النص لليمين */           
+            font-weight: bold;
         }
 
         select:focus {
@@ -47,13 +50,15 @@
             margin-bottom: 10px;
             padding: 10px;
             font-size: 24px;
-            background-color: lightblue;
-            color: #000080;
-            border: 2px solid #000080;
+           background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+             border: 3px solid yellow;
             border-radius: 10px;
             cursor: pointer;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            margin-left: auto; /* نقل الأزرار إلى اليمين */
+            font-weight: bold;
         }
 
         .back-button {
@@ -61,16 +66,14 @@
             margin-top: 20px;
             padding: 10px;
             font-size: 28px;
-            background-color: lightblue;
-            color: black;
-            border: 2px solid #000080;
+            background: linear-gradient(to bottom,#003366,  #000000);
+            color: white;
+            border: 3px solid yellow;
             border-radius: 10px;
             cursor: pointer;
+            font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
-        }
-
-        button:hover {
-            background-color:YELLOW;
+            margin-left: auto; /* نقل زر الرجوع إلى اليمين */
         }
 
         .hidden {
@@ -79,9 +82,16 @@
 
         .button-container {
             margin-bottom: 10px;
+            align-items: flex-end; /* محاذاة الأزرار إلى اليمين */
+            margin-left: auto; /* دفع الأزرار لليمين */
         }
 
-        .content-div {
+
+             button: hover {
+            background-color:YELLOW;
+        }
+
+       .content-div {
             background-color: white;
             padding: 30px;
             font-size: 18px;
@@ -98,48 +108,73 @@
             line-height: 1.5;
             color: #000080;
         }
-
-        header {
+       header {
+          
+            background: linear-gradient(to bottom,#003366,  #000000);
             position: fixed;
-            height: 90px;
+            height: 110px;
             top: 0;
-            width: 100%;
-            background-color: lightblue;
+            width: 100%;            
             color: black;
             z-index: 1000;
             padding: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3), 0 -1px 4px rgba(255, 255, 255, 0.3);
             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
             border-radius: 8px;
-            border: 2px solid black;
             text-align: center;
             font-size: 20px;
             font-weight: bold;
+            color: yellow;            
+            align-items: center;
+            border: 2px solid #000080;
+            font-size: 18px;
+ 
         }
 
         .selected-info {
-            background-color: #00FFFF;
+           background: #f0f0f0;
             padding: 30px;
             border: 3px solid #000080;
             border-radius: 10px;
             width: 620px;
             font-size: 30px;
             text-align: center;
+          
+        }
+        label {
+            font-size: 28px;
+            margin-bottom: 2px;
+            display: block;
+            text-align: center; /* محاذاة النص إلى اليمين */
+        }
+      
+ /* تعديل حجم الإعلان */
+        .ad-container iframe {
+            width: 100%;
+            height: 800px; /* تكبير الإعلان ليغطي عرض الصفحة */
+            border: none;
+            margin: 0;
+            border: 2px solid BLACK;
+           border: 2px solid black;
+            text-align: center;
+            font-size: 20px;
+             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        }
+ .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
         }
 
-        label {
-            font-size: 25px;
-            margin-bottom: 4px;
-            display: block; /* عرض النص فوق القائمة */
-        }
+
     </style>
 </head>
 <body>
  <header>
- <div class="header-content">   
+ <div class="container">   
 <label for="carSelect"> :قائمـــــــــــــــــة أسماء السيارات:TOYOTA </label>
 <select id="carSelect" onchange="showModel()">
 <option value="0">اضغط هناء لأختيار اسم السياره</option>
@@ -226,7 +261,7 @@
 <option value="81">  Yaris VERSO </option>
 </select> 
 </header>
- <div class="  selected-info">
+ <div class="selected-info">
  <!-- زر العودة -->
     <button id="backButton" class="back-button" onclick="goBack()">رجـــــــــــــوع</button>       
 <div id="1Model" class="hidden button-container">1"> 4RUNNER
@@ -4163,20 +4198,36 @@
 </DIV>
 </DIV>
 
- <script>
+ <div class="ad-container">
+<iframe id="adFrame" src="https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad"></iframe>
+    </div>
 
-    // الرابط الذي تريد فتحه
-    var adLink = "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78";
+<script>
+// روابط الإعلانات
+        const adLinks = [
+            "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78",
+            "https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/v5bgvtzdz?key=caca17e07e0c43d913b1bb49f4512654",
 
-    // فتح الرابط تلقائيًا عند تحميل الصفحة
-    window.onload = function() {
-        window.open(adLink, '_blank'); // '_blank' لفتح الرابط في نافذة جديدة
-    };
+            "https://muzzlequick.com/ign62tqcez?key=6daa24573ee6b6e8ba0378ca697a9f2d",
+            "https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a",  // يمكنك إضافة المزيد من الروابط هنا
+            "https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad",
+        ];
 
+        let currentAdIndex = 0;
 
+        // دالة لتغيير الإعلان
+        function changeAd() {
+            currentAdIndex = (currentAdIndex + 1) % adLinks.length;
+            document.getElementById('adFrame').src = adLinks[currentAdIndex];
+        }
 
-        
-    
+        // تغيير الإعلان كل دقيقة (60 ثانية)
+        setInterval(changeAd, 60000);
+
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
     var currentModelId = ""; // لتعقب الموديل الحالي
 
 document.addEventListener('DOMContentLoaded', function() {
