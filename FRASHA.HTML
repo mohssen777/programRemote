@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم البرمجه</title>
+    <style>
+        /* جميع التنسيقات الأخرى */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Image Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            margin: 10px 0;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: slide 10s infinite;
+            border: 2px solid red;
+        }
+
+        /* Existing Car Cards Styles */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 10px;
+        }
+
+        .sub-header {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 90px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid black;
+            width: 200px;
+            height: 100px;
+        }
+
+        .card span {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* تعديل حجم الإعلان */
+        .ad-container iframe {
+            width: 100%;
+            height: 170px;
+            border: none;
+            margin: 0;
+            border: 2px solid BLACK;
+            text-align: center;
+            font-size: 20px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<header>
+
+</header>
+<body>
+    <!-- إعلان متعدد الروابط في الأعلى مع التغيير التلقائي كل دقيقة -->
+    <div class="ad-container">
+        <iframe id="adFrame" src="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78"></iframe>
+    </div>
+    <div class="container">
+        <h1>اضغط على اي شعار لتضهر لك المعلومــــــــــــــات</h1>
+        <div class="grid">
+            <!-- Car brand cards with text instead of images -->
+            <a href="TOYOTA.HTML" class="card"><span>تويوتا</span></a> 
+            <a href="KIA.HTML" class="card"><span>كيا</span></a>
+            <a href="SOUPRA.HTML" class="card"><span>سوبرا</span></a> 
+            <a href="SATRON.HTML" class="card"><span>ساتورن</span></a>
+        </div>
+        <div class="grid">
+            <a href="LEKZZ.HTML" class="card"><span>ليكزس</span></a>
+            <a href="JEEP.HTML" class="card"><span>جيب</span></a>
+            <a href="BMW.HTML" class="card"><span>بي إم دبليو</span></a>
+            <a href="GMC.HTML" class="card"><span>جي إم سي</span></a>
+        </div>
+        <div class="grid">
+            <a href="dihatso.HTML" class="card"><span>ديهاتسو</span></a>
+            <a href="hionda.HTML" class="card"><span>هوندا</span></a>
+            <a href="MISTBOSHI.HTML" class="card"><span>ميتسوبيشي</span></a>
+            <a href="HEOANDAI.HTML" class="card"><span>هيونداي</span></a>
+        </div>
+        <div class="grid">
+            <a href="volvo.HTML" class="card"><span>فولفو</span></a>
+            <a href="isuzu.HTML" class="card"><span>إيسوزو</span></a>
+            <a href="NISSAN.HTML" class="card"><span>نيسان</span></a>
+            <a href="SOZOKI.HTML" class="card"><span>سوزوكي</span></a>
+        </div>
+    </div>
+    <!-- إعلان متعدد الروابط في الأعلى مع التغيير التلقائي كل دقيقة -->
+    <div class="ad-container">
+        <iframe id="adFrame" src="https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad"></iframe>
+    </div>
+    <script>
+        // روابط الإعلانات
+        const adLinks = [
+            "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78",
+            "https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff",
+            "https://muzzlequick.com/v5bgvtzdz?key=caca17e07e0c43d913b1bb49f4512654",
+            "https://muzzlequick.com/ign62tqcez?key=6daa24573ee6b6e8ba0378ca697a9f2d",
+            "https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a",
+            "https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad",
+        ];
+
+        let currentAdIndex = 0;
+
+        // دالة لتغيير الإعلان
+        function changeAd() {
+            currentAdIndex = (currentAdIndex + 1) % adLinks.length;
+            document.getElementById('adFrame').src = adLinks[currentAdIndex];
+        }
+
+        // تغيير الإعلان كل دقيقة (60 ثانية)
+        setInterval(changeAd, 10000);
+
+        function openSidebar() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+    </script>
+
+</body>
+</html>
