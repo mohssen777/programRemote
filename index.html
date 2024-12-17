@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تعلم البرمجه</title>
     <style>
- /* جميع التنسيقات الأخرى */
+        /* جميع التنسيقات الأخرى */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+       body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            margin-TOP: 100px;
+            margin-TOP: 130px;
            
         }
 
@@ -35,6 +35,7 @@
             max-width:100%;
             margin: 0 auto;
             text-align: center;
+             margin-TOP: 40px;
         }
 
         h2 {
@@ -49,12 +50,7 @@
             color: #666;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(6px, 1fr));
-            gap: 15px;
-        }
-
+       
         .card {
             background-color: #fff;
             border-radius: 8px;
@@ -155,27 +151,7 @@
             transform: scale(1.1); /* تكبير قليلاً عند التمرير */
         }
 
-  /* Image Slider */
-        .slider {
-            position: relative;
-            width: 100%;
-            height: 150px;
-            overflow: hidden;
-            margin: 10px 0;
-             border: 2px solid black;
-             border-radius: 5px;
-           
-        }
-
-        .slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: slide 10s infinite;
-            border: 2px solid red;
-        }
-
-       
+ 
 
        
         /* Existing Car Cards Styles */
@@ -184,10 +160,9 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            margin-top:100px;
-          font-size: 10px;
+             font-size: 10px;
+            
         }
-     
 
         h2 {
             font-size: 2rem;
@@ -205,47 +180,10 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 15px;
+            gap: 17px;
         }
 
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            border: 2px solid black;
-             
-        }
-
-        .card img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
-        
-        .card span {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
- /* تعديل حجم الإعلان */
-        .ad-container iframe {
-            width: 100%;
-            height: 170px; /* تكبير الإعلان ليغطي عرض الصفحة */
-            border: none;
-            margin: 0;
-          margin-top:70px;
-            border: 2px solid BLACK;
-          
-            text-align: center;
-            font-size: 20px;
-             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-        }
+       
 
  /* الهيدر */
         header {
@@ -274,18 +212,18 @@
  header marquee {
             color: BLACK;
             font-weight: bold;
-             border-radius: 8px;
+             border-radius: 10px;
             border: 2px solid black;
             text-align: center;
             font-size: 20px;
-             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+             border-bottom: 2px solid black;
             
         }
-
-        /* تصميم الإعلان ليظهر على شكل شريط في الأعلى */
+        /* تصميم الإعلان */
+        /* تصميم الإعلان */
         #ad {
             position: fixed;
-            top: 0;
+            top: 50%;
             left: 0;
             width: 100%;
             background-color: #333;
@@ -299,36 +237,67 @@
 
         #ad iframe {
             width: 100%;
-            height: 50px; /* عرض الإعلانات بشكل شريط */
+            height: 60px; /* عرض الإعلانات بشكل شريط */
+             width: 100%;
+            height: 170px; /* تكبير الإعلان ليغطي عرض الصفحة */
+            border: none;
+            margin: 0;            
+           border: 2px solid black;
+            text-align: center;
+            font-size: 20px;
+             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-size: 28px;
+            margin-bottom: 2px;
+            display: block;
+            text-align: center; /* محاذاة النص إلى اليمين */
+        }
+      
+ /* تعديل حجم الإعلان */
+         .ad-container iframe {
+            width: 728PX;
+            height: 90px; /* تكبير الإعلان ليغطي عرض الصفحة */
+            border: none;
+            margin: 0;
+            border: 2px solid BLACK;
+             border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+ .select-info {
+           background: #f0f0f0;
+            padding: 8px;
+            border-radius: 7px;
+            width: 100%;
+            display: block;
+             height: 130px; /* تكبير الإعلان ليغطي عرض الصفحة */
+          margin-top: 20px;
+          overflow: hidden; /* تأكيد أن الإعلان لا يمتد خارج الهيدر */
+      
+          
+          
         }
 
 
+   
     </style>
 </head>
 <header>
     
         <span class="open-btn" onclick="openSidebar()">☰</span> <!-- زر فتح القائمة -->
-        
-
-           
-           
-     
-            <span><b><marquee bgcolor="lightblue" 
- width="700"  direction="right" ><CENTER>
-<script type="text/javascript">
+         <span><b>
+		  
+ <script type="text/javascript">
 	atOptions = {
-		'key' : '0c0351fd37702cd08aea1f1798a8e517',
+		'key' : 'b0fd86a419f2f4abcdcbc9d230e90280',
 		'format' : 'iframe',
 		'height' : 90,
 		'width' : 728,
 		'params' : {}
 	};
 </script>
-
-<script type="text/javascript" src="//muzzlequick.com/0c0351fd37702cd08aea1f1798a8e517/invoke.js"></script>
-   
-</center> </marquee ></span>
-   
+<script type="text/javascript" src="//yapabbreviate.com/b0fd86a419f2f4abcdcbc9d230e90280/invoke.js"></script>
+    </span> 
 
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
@@ -337,53 +306,55 @@
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الملف الشخصي</a>
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">الإعدادات</a>
         <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">سياسة الخصوصية</a>
-          <a href="https://mohssen777.github.io/CarsRemotes/abaut.HTML"    class="page-link">معلومات عنا </a>
+        <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78">معلومات حول التطبيق</a>
     </div>
  <!-- Image Slider -->
    
 </header>
 <body>
-<!-- إعلان متعدد الروابط في الأعلى مع التغيير التلقائي كل دقيقة -->
-      <div class="ad-container">
-<script type='text/javascript' src='//yapabbreviate.com/50/ea/66/50ea667c8a9e7400e3154f597e629a7e.js'></script>
-	    <div class="container">
-         <h1>اضغط على اي شعار لتضهر لك المعلومــــــــــــــات</h1>
+<div class="  select-info">
+ <script type="text/javascript">
+	atOptions = {
+		'key' : 'b0fd86a419f2f4abcdcbc9d230e90280',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//yapabbreviate.com/b0fd86a419f2f4abcdcbc9d230e90280/invoke.js"></script>
+</div> 
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+         <h1>اضغط على اي شعار لتضهر لك المعلومــــات</h1>
         <div class="grid">
             <!-- Car brand cards with links -->
-   <a href=" https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78 "><center><img class="card "  src="https://i.ibb.co/31PpYv5/image.png"   width="110px" height="110px"></center></a>           
- <script type='text/javascript' src='//muzzlequick.com/51/67/be/5167be8b378863e1b63bf5cee7760da7.js'></script>
-
-          <a href="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78  "><center><img class="card " src="https://i.ibb.co/TWGJY2Z/image.png " width="110px" height="110px"></center></a>
-<a href=" https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78 "><center><img class="card " src="https://i.ibb.co/25nKdZ4/image.png"  width="110px" height="110px"></center></a>
-          
-  <a href="https://mohssen777.github.io/CarsRemotes/TOYOTA.HTML" class="page-link"><center><img class="card" src="https://f.top4top.io/p_3081ur30h1.jpg" width="110px" height="110px"></center></a> 
-  <a href="https://mohssen777.github.io/CarsRemotes/KIA.HTML"  class="page-link"><center><img class="card " src="https://f.top4top.io/p_308141rpm1.jpg" width="110px" height="110px"></center></a>  
-
-<script type='text/javascript' src='//muzzlequick.com/51/67/be/5167be8b378863e1b63bf5cee7760da7.js'></script>
+    <a href="https://mohssen777.github.io/CarsRemotes/TOYOTA.HTML" class="page-link"><center><img class="card" src="https://f.top4top.io/p_3081ur30h1.jpg" width="110px" height="110px"></center></a> 
+  <a href="https://mohssen777.github.io/CarsRemotes/KIA.HTML"  class="page-link"><center><img class="card " src="https://i.ibb.co/yXqqKX6/image.jpg" width="110px" height="110px"></center></a>  
 
 <a href="https://mohssen777.github.io/CarsRemotes/SOUPRA.HTML" class="page-link"><center><img class="card " src="https://g.top4top.io/p_3081nz8hp1.jpg" width="110px" height="110px"></center></a> 
 <a href="https://mohssen777.github.io/CarsRemotes/SATRON.HTML" class="page-link"><center><img class="card " src="https://a.top4top.io/p_3081sm3cw1.jpg" width="110px" height="110px"></center></a>
 
 
 
-<a href="https://mohssen777.github.io/CarsRemotes/LEKZZ.HTML" class="page-link"><center><img class="card " src="https://a.top4top.io/p_3094zi8c81.jpg " width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/JEEP.HTML" class="page-link"><center><img class="card " src="https://a.top4top.io/p_30949rzoe1.jpg " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/LEKZZ.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/QQvJtGM/file-Ud5x87ve86g5w-Yg-Ng-Wqcz5.webp " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/JEEP.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/wNX7rk4/image.jpg " width="110px" height="110px"></center></a>
 
 
-<a href="https://mohssen777.github.io/CarsRemotes/BMW.HTML" class="page-link"><center><img class="card " src="https://l.top4top.io/p_3113tsnnu1.jpg " width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/GMC.HTML" class="page-link"><center><img class="card " src="https://j.top4top.io/p_3094zerhd1.jpg " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/BMW.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/DgX0rR4/file-5-Ax8p-Dc-GYRz-Tjj-VHHx-QGo1.webp " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/GMC.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/RHWZyzG/file-Wav-Ue5r-C5d-HVev-UWGs-T2o8.webp " width="110px" height="110px"></center></a>
 
 
-<a href="https://mohssen777.github.io/CarsRemotes/dihatso.HTML" class="page-link"><center><img class="card " src="https://g.top4top.io/p_3081ksmaz2.jpg" width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/hionda.HTML" class="page-link"><center><img class="card " src="https://f.top4top.io/p_30940zqed1.jpg " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/dihatso.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/qR1KVJY/image.jpg" width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/hionda.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/2M5hf9C/image.jpg " width="110px" height="110px"></center></a>
 
 
-<a href="https://mohssen777.github.io/CarsRemotes/MISTBOSHI.HTML" class="page-link"><center><img class="card " src="https://f.top4top.io/p_3094bfotl1.jpg " width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/HEOANDAI.HTML" class="page-link"><center> <img class="card " src="https://f.top4top.io/p_3081c6fde3.jpg" width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/MISTBOSHI.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/m0Gf4Dq/image.jpg"  " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/HEOANDAI.HTML" class="page-link"><center> <img class="card " src="https://i.ibb.co/qpHcH7L/image.jpg" width="110px" height="110px"></center></a>
 
 
-<a href="https://mohssen777.github.io/CarsRemotes/VOLVO.HTML" class="page-link"><center><img class="card " src="https://j.top4top.io/p_3081iwjrp3.jpg" width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/SUZUE.HTML" class="page-link"> <center><img class="card " src=" https://g.top4top.io/p_3113fq8ge1.jpg " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/volvo.html" class="page-link"><center><img class="card " src="https://i.ibb.co/HPHCzpn/image.jpg"" width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/SUZUE.HTML" class="page-link"> <center><img class="card " src=" https://i.ibb.co/TH4gPNH/image.jpg " width="110px" height="110px"></center></a>
 
 
 <a href="https://mohssen777.github.io/CarsRemotes/NISSAN.HTML" class="page-link"><center><img class="card " src="https://f.top4top.io/p_3094gcizn1.jpg " width="110px" height="110px"></center></a>
@@ -392,10 +363,10 @@
 
 
 <a href="https://mohssen777.github.io/CarsRemotes/DAEW.HTML" class="page-link"><center><img class="card " src="https://l.top4top.io/p_3094yxj6s1.jpg " width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/SHAVER.HTML"  class="page-link"><center><img class="card " src="https://j.top4top.io/p_30812grcf1.jpg" width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/SHAVER.HTML"  class="page-link"><center><img class="card " src="https://i.ibb.co/4V6tFYK/file-U5xb-VSad3yvuhb4-Lcf-VUe2.webp" width="110px" height="110px"></center></a>
 
 
-<a href="https://mohssen777.github.io/CarsRemotes/BUICK.HTML" class="page-link"><center><img class="card " src="https://f.top4top.io/p_3081ojcnb1.jpg" width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/BUICK.HTML" class="page-link"><center><img class="card " src="https://i.ibb.co/GvGFnDC/image.jpg" width="110px" height="110px"></center></a>
 <a href="https://mohssen777.github.io/CarsRemotes/Citroen.HTML"  class="page-link"><center><img class="card " src="https://a.top4top.io/p_3081n79kw1.jpg" width="110px" height="110px"></center></a>
 
 
@@ -426,58 +397,38 @@
 
 
 <a href="https://mohssen777.github.io/CarsRemotes/PONTIAC.HTML" class="page-link"><center><img class="card " src="https://f.top4top.io/p_31134v5iw1.jpg " width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/CADILLAC.HTML" class="page-link" > <center><img class="card " src=" https://j.top4top.io/p_311324uzz1.jpg " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/CADILLAC.HTML" class="page-link" > <center><img class="card " src=" https://i.ibb.co/Wy4jjM9/image.jpg " width="110px" height="110px"></center></a>
 
 
+         
 
-<a href="https://mohssen777.github.io/CarsRemotes/SCION.HTML" class="page-link" ><center><img class="card " src="https://g.top4top.io/p_31136yo681.jpg " width="110px" height="110px"></center></a>
-<a href="https://mohssen777.github.io/CarsRemotes/EGLE.HTML" class="page-link" ><center><img class="card " src="https://a.top4top.io/p_3113d37jg1.jpg " width="110px" height="110px"></center></a>
-
+<a href="https://mohssen777.github.io/CarsRemotes/SCION.HTML" class="page-link" ><center><img class="card " src="https://i.ibb.co/JCCCDkV/p-31136yo681.jpg " width="110px" height="110px"></center></a>
+<a href="https://mohssen777.github.io/CarsRemotes/EGLE.HTML" class="page-link" ><center><img class="card " src="https://i.ibb.co/g7vN7Vt/image.jpg " width="110px" height="110px"></center></a>
 
             <!-- Add more cards as needed with links -->
         </div>
     </div>
- <div id="ad">
-        <p>يرجى الانتظار...</p>
-        <iframe src="https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78" frameborder="0"></iframe>
-    </div>
- <!-- إعلان متعدد الروابط في الأعلى مع التغيير التلقائي كل دقيقة -->
-    <div class="ad-container">
-        <script type="text/javascript">
+<div class="  select-info">
+ <script type="text/javascript">
 	atOptions = {
-		'key' : '0c0351fd37702cd08aea1f1798a8e517',
+		'key' : 'b0fd86a419f2f4abcdcbc9d230e90280',
 		'format' : 'iframe',
 		'height' : 90,
 		'width' : 728,
 		'params' : {}
 	};
 </script>
-<script type="text/javascript" src="//muzzlequick.com/0c0351fd37702cd08aea1f1798a8e517/invoke.js"></script>
-           
-    <script>
+<script type="text/javascript" src="//yapabbreviate.com/b0fd86a419f2f4abcdcbc9d230e90280/invoke.js"></script>
+</div>  
 
- // روابط الإعلانات
-        const adLinks = [
-            "https://muzzlequick.com/dui54a78tn?key=13914285e883dfde76cf4bb21a7acd78",
-            "https://muzzlequick.com/pzf4qkb22m?key=4f13afdb8cde926fe0f45501b9c471ff",  // يمكنك إضافة المزيد من الروابط هنا
-            "https://muzzlequick.com/v5bgvtzdz?key=caca17e07e0c43d913b1bb49f4512654",
-           
-             "https://muzzlequick.com/ign62tqcez?key=6daa24573ee6b6e8ba0378ca697a9f2d",
-            "https://muzzlequick.com/ckhdh7m2z?key=3f6502183970a118de38f736fd1d9e3a",  
-            "https://muzzlequick.com/m1n2e9zyzb?key=fff57f14a651a7158c67b60c08d086ad",
-        ];
+    <!-- الإعلان -->
+    <div id="ad">
+ <h1>يرجى الانتضار</h1>
+     <iframe id="adFrame" src="https://www.profitablecpmrate.com/mrcp1sv5v4?key=642fc52240338981a37310fbf3fb7400"></iframe>
+ </div>
 
-        let currentAdIndex = 0;
-
-        // دالة لتغيير الإعلان
-        function changeAd() {
-            currentAdIndex = (currentAdIndex + 1) % adLinks.length;
-            document.getElementById('adFrame').src = adLinks[currentAdIndex];
-        }
-
-        // تغيير الإعلان كل دقيقة (60 ثانية)
-        setInterval(changeAd, 10000);
-
+     <script>
+ 
         function openSidebar() {
             document.getElementById("sidebar").style.width = "250px";
         }
@@ -510,7 +461,7 @@
             }
         }
 
- // هذه الدالة تعرض الإعلان وتؤخر الانتقال إلى الرابط لمدة 3 ثوان
+        // هذه الدالة تعرض الإعلان وتؤخر الانتقال إلى الرابط لمدة 3 ثوان
         function showAdAndRedirect(event, targetURL) {
             // منع الانتقال الفوري
             event.preventDefault();
@@ -536,7 +487,6 @@
                 showAdAndRedirect(event, targetURL);
             });
         });
-
     </script>
 </body>
 </html>
